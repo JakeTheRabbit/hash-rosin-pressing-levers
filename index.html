@@ -350,6 +350,22 @@
   .citations a { word-break: break-all; }
   .footer-note { max-width: 820px; margin: 1.5rem auto 0; font-size: .8rem; color: rgba(247,245,240,.55); }
 
+  /* ---------- INLINE TERMS ---------- */
+  .term { border-bottom: 1px dotted var(--resin); cursor: help; text-decoration: none; }
+
+  /* ---------- PRIMER ---------- */
+  .primer-lede { font-family: var(--serif); font-size: 1.18rem; color: var(--ink-soft); font-style: italic; }
+  .defs { display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+  .def { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--resin-bright); border-radius: 0 var(--radius) var(--radius) 0; padding: .9rem 1.2rem; box-shadow: var(--shadow); }
+  .def .dt { font-weight: 700; color: var(--resin-deep); font-family: var(--serif); font-size: 1.12rem; }
+  .def .dd { margin: .25rem 0 0; color: var(--ink-soft); font-size: .92rem; }
+
+  /* ---------- GLOSSARY ---------- */
+  .glossary { columns: 2; column-gap: 2.5rem; margin: 1.5rem 0 0; }
+  @media (max-width: 760px) { .glossary { columns: 1; } }
+  .gloss { break-inside: avoid; margin: 0 0 1rem; font-size: .9rem; line-height: 1.5; color: var(--ink-soft); }
+  .gloss .g-term { font-weight: 700; color: var(--resin-deep); }
+
   /* ---------- PRINT ---------- */
   @media print {
     body { background: white; }
@@ -392,6 +408,7 @@
   <nav class="toc">
     <p class="toc-title">Contents</p>
     <ol>
+      <li><a href="#start">Start Here — Plain English</a></li>
       <li><a href="#core">Core Answer</a></li>
       <li><a href="#pipeline">The Pipeline at a Glance</a></li>
       <li><a href="#setpoints">Starting Setpoints by Material</a></li>
@@ -409,22 +426,52 @@
       <li><a href="#hierarchy">Practical Control Hierarchy</a></li>
       <li><a href="#troubleshoot">Troubleshooting Matrix</a></li>
       <li><a href="#model">The Simplest Mental Model</a></li>
+      <li><a href="#glossary">Glossary</a></li>
     </ol>
   </nav>
 
   <main>
 
     <!-- 01 ===================================================== -->
+    <section id="start">
+      <h2><span class="h2-num">01</span>Start Here — Rosin in Plain English</h2>
+      <p class="primer-lede">New to all this? Read this one section and the rest of the guide will make sense. No chemistry needed.</p>
+
+      <p>A cannabis plant is covered in thousands of tiny, mushroom-shaped glands called <strong>trichomes</strong> — the frosty "crystals" you can see on good flower. Each trichome head is a microscopic sac of <strong>resin</strong>: the sticky oil that carries almost all of the plant's potency, smell and flavour. Every solventless concentrate is really just <em>those heads, collected and then gently squeezed</em> — with no chemical solvents like butane or alcohol anywhere in the process.</p>
+
+      <p>It happens in two halves:</p>
+      <ol>
+        <li><strong>Make the hash.</strong> Knock the trichome heads off the plant and gather them into a powder or paste. Two common ways: stir the plant in <em>ice water</em> so the brittle heads snap off and sink (<strong>bubble hash</strong>), or rub dried plant over fine <em>screens</em> (<strong>dry sift</strong>).</li>
+        <li><strong>Press the hash into rosin.</strong> Seal the hash in a small mesh bag and squeeze it between two gently heated metal plates. Heat softens the resin; pressure pushes it out through the mesh as a golden oil. That oil is <strong>rosin</strong>.</li>
+      </ol>
+
+      <p>That is the whole idea — <strong>heat + pressure, no solvents</strong>. The craft is in restraint: too much heat boils away the flavour, and too much force bursts the bag and pushes plant matter through the mesh. After pressing, the rosin is <strong>cured</strong> (rested under controlled warmth or cold) to set its final texture, then either <strong>dabbed</strong> (a small dose flash-vaporised on a hot surface and inhaled) or loaded into a vape cartridge.</p>
+
+      <div class="defs">
+        <div class="def"><span class="dt">Trichome</span><p class="dd">The tiny resin gland on the plant — the visible "crystal." Its head holds the oil you want.</p></div>
+        <div class="def"><span class="dt">Hash</span><p class="dd">Trichome heads gathered into a powder or paste, before pressing.</p></div>
+        <div class="def"><span class="dt">Rosin</span><p class="dd">The oil pressed out of hash (or flower) using only heat and pressure.</p></div>
+        <div class="def"><span class="dt">Solventless</span><p class="dd">Made with only force, heat, water and ice — never butane, CO₂ or alcohol. That's the appeal.</p></div>
+        <div class="def"><span class="dt">Dab</span><p class="dd">The usual way to use rosin: vaporise a small amount on a hot surface and inhale it.</p></div>
+        <div class="def"><span class="dt">Cure</span><p class="dd">Resting fresh rosin at a set temperature for hours to weeks to fix its texture and flavour.</p></div>
+      </div>
+
+      <blockquote><strong>The one big idea of the whole guide:</strong> the press cannot <em>add</em> quality — it can only lose less of it. Your starting material (the genetics, the harvest, the wash) sets the ceiling. Heat, pressure, time and mesh size only decide how close to that ceiling you land.</blockquote>
+
+      <p>From here on, the guide treats the press as a set of <strong>levers</strong> you can pull — temperature, pressure, time and mesh ("micron") size — and shows what each one does to yield and quality, what goes wrong, and how to fix it. Hit a word you don't know? Jump to the <a href="#glossary">Glossary</a> (Section 19).</p>
+    </section>
+
+    <!-- 02 ===================================================== -->
     <section id="core">
-      <h2><span class="h2-num">01</span>Core Answer</h2>
-      <p>A rosin press has only four levers — <strong>heat, pressure, time and screen (micron)</strong> — and they all negotiate a single tension: <em>yield versus quality</em> (terpene retention, colour, clarity). Heat lowers resin viscosity so it flows; the micron bag decides what flows <em>with</em> it (pure trichome oil, or fats and plant matter too); pressure and time only push the reaction along. None of them can lift the ceiling set upstream.</p>
+      <h2><span class="h2-num">02</span>Core Answer</h2>
+      <p>A rosin press has only four levers — <strong>heat, pressure, time and screen (<abbr class="term" title="Mesh size of the press bag, in microns (µm). Smaller number = finer mesh = cleaner rosin but lower yield.">micron</abbr>)</strong> — and they all negotiate a single tension: <em>yield versus quality</em> (<abbr class="term" title="The aromatic oils that give cannabis its smell and flavour — delicate and easily lost to heat.">terpene</abbr> retention, colour, clarity). Heat lowers <abbr class="term" title="The plant's sticky oil, held in the trichome heads — the thing you are extracting.">resin</abbr> <abbr class="term" title="How thick or runny the oil is; heat lowers viscosity so rosin flows.">viscosity</abbr> so it flows; the micron bag decides what flows <em>with</em> it (pure <abbr class="term" title="The tiny resin gland — the visible crystal — whose head holds the oil.">trichome</abbr> oil, or fats and plant matter too); pressure and time only push the reaction along. None of them can lift the ceiling set upstream. <span style="color:var(--ink-muted)">New here? Start with Section 01.</span></p>
       <blockquote><strong>Quality in, quality out.</strong> You cannot press 6-star rosin from 3-star input. The wash, the dry and the grade fix the maximum; the press and the cure only preserve or squander it. Hash presses <em>cooler</em> than flower, and clean full-melt hash blows out if you rush the pressure.</blockquote>
       <p>So the whole craft reduces to: fix the input, pick the product, choose a micron that matches the trichome heads, set the lowest temperature that still flows, ramp pressure only to finish the flow, collect cold, and cure for texture.</p>
     </section>
 
-    <!-- 02 ===================================================== -->
+    <!-- 03 ===================================================== -->
     <section id="pipeline">
-      <h2><span class="h2-num">02</span>The Pipeline at a Glance</h2>
+      <h2><span class="h2-num">03</span>The Pipeline at a Glance</h2>
       <p>Hash rosin is the back half of a longer chain. Cold-chain steps (where heat is the enemy) are marked in blue; the press and cure are where heat becomes a tool.</p>
       <div class="flow">
         <div class="flow-step coldstep"><span class="n">01</span><span class="t">Harvest</span><span class="d">80–90% cloudy trichomes, lights-off</span></div>
@@ -442,9 +489,9 @@
       <p>Sections 10–13 break each stage down with its own parameters. The matrices (07, 08, 12) and failure modes (14) tell you which lever to move when a stage goes wrong.</p>
     </section>
 
-    <!-- 03 ===================================================== -->
+    <!-- 04 ===================================================== -->
     <section id="setpoints">
-      <h2><span class="h2-num">03</span>Starting Setpoints by Input Material</h2>
+      <h2><span class="h2-num">04</span>Starting Setpoints by Input Material</h2>
       <p>Where to begin for each of the four input materials. These are <em>starting points</em> to dial in from — not targets to chase. Temperatures are platen temperature; press <em>to flow</em>, not to the clock. Hash sits cooler than flower because its trichome heads are already isolated and need only enough heat to melt resin.</p>
       <div class="table-wrap"><div class="table-scroll">
       <table class="matrix">
@@ -512,9 +559,9 @@
       </div>
     </section>
 
-    <!-- 04 ===================================================== -->
+    <!-- 05 ===================================================== -->
     <section id="known">
-      <h2><span class="h2-num">04</span>Known / Assumed / Unknown</h2>
+      <h2><span class="h2-num">05</span>Known / Assumed / Unknown</h2>
       <h3>Knowns (settled)</h3>
       <ul>
         <li>Lower platen temperature preserves terpenes and colour; higher temperature buys yield and flow at their expense.</li>
@@ -538,9 +585,9 @@
       </ul>
     </section>
 
-    <!-- 05 ===================================================== -->
+    <!-- 06 ===================================================== -->
     <section id="balances">
-      <h2><span class="h2-num">05</span>The Press as Four Coupled Balances</h2>
+      <h2><span class="h2-num">06</span>The Press as Four Coupled Balances</h2>
       <p>Like a grow room, a press is best read as a few coupled balances rather than independent knobs. Move one and the others shift.</p>
       <div class="balances">
         <div class="balance-card">
@@ -571,9 +618,9 @@
       <blockquote>The master tension that links all four: <strong>Yield ↔ Quality.</strong> Almost every adjustment trades one for the other. Decide which you're optimising <em>before</em> you touch a lever.</blockquote>
     </section>
 
-    <!-- 06 ===================================================== -->
+    <!-- 07 ===================================================== -->
     <section id="levers">
-      <h2><span class="h2-num">06</span>Lever Inventory</h2>
+      <h2><span class="h2-num">07</span>Lever Inventory</h2>
       <p>The full set of controls, grouped by where they sit in the chain. Upstream levers cap the ceiling; press levers set the trade; finishing levers set the texture.</p>
 
       <h3>Upstream / material levers</h3>
@@ -624,9 +671,9 @@
       </div></div>
     </section>
 
-    <!-- 07 ===================================================== -->
+    <!-- 08 ===================================================== -->
     <section id="interaction">
-      <h2><span class="h2-num">07</span>Main Lever Interaction Matrix</h2>
+      <h2><span class="h2-num">08</span>Main Lever Interaction Matrix</h2>
       <p>What happens to each outcome when you turn a press lever <em>up</em> (or, for micron, <em>tighter</em>). Direction of effect, all else held equal.</p>
       <div class="legend">
         <span class="legend-item"><span class="legend-symbol up">↑</span> increases / improves</span>
@@ -708,9 +755,9 @@
       <p>The pattern to internalise: <strong>temperature and micron are your quality levers; pressure and time are your finishing levers.</strong> Reach for heat and screen first; use force only to complete a flow that heat has already started.</p>
     </section>
 
-    <!-- 08 ===================================================== -->
+    <!-- 09 ===================================================== -->
     <section id="symptom">
-      <h2><span class="h2-num">08</span>Symptom-to-Parameter Matrix</h2>
+      <h2><span class="h2-num">09</span>Symptom-to-Parameter Matrix</h2>
       <p>Read a result, find the lever that moved too far, make the one corrective change. Adjust a single lever per run so the next result is interpretable.</p>
       <div class="table-wrap"><div class="table-scroll">
       <table>
@@ -728,9 +775,9 @@
       </div></div>
     </section>
 
-    <!-- 09 ===================================================== -->
+    <!-- 10 ===================================================== -->
     <section id="worked">
-      <h2><span class="h2-num">09</span>Worked Example: Raising Plate Temp +6 °C</h2>
+      <h2><span class="h2-num">10</span>Worked Example: Raising Plate Temp +6 °C</h2>
       <p>A single nudge cascades. Take full-melt fresh-frozen hash and raise the platen from <strong>71 °C → 77 °C</strong>, holding everything else constant.</p>
       <h3>Lever pulled</h3>
       <p>Plate temperature +6 °C, still inside the hash band (60–77 °C), 36 µm bag, gentle ramp.</p>
@@ -757,9 +804,9 @@
       <div class="box cold"><p class="box-title">When not to</p><p>Pressing 5–6★ fresh-frozen for a terpene-forward live badder. Here those six degrees trade your nose for a few points of yield — a bad deal. Stay at 71 °C and accept the lower number.</p></div>
     </section>
 
-    <!-- 10 ===================================================== -->
+    <!-- 11 ===================================================== -->
     <section id="stages">
-      <h2><span class="h2-num">10</span>Stage Deep-Dives</h2>
+      <h2><span class="h2-num">11</span>Stage Deep-Dives</h2>
       <p>The full farm-to-dab chain, stage by stage, with the parameters that matter at each. Everything before the press is a cold-chain step where heat is the enemy.</p>
 
       <h3>10.1 · Harvest &amp; trichome maturity</h3>
@@ -834,9 +881,9 @@
       <p>Collect immediately with a cold dab tool onto fresh parchment, then into pre-chilled glass; seal. Cold collection preserves terpenes and sets a cleaner texture. Move straight to your product path (Section 13).</p>
     </section>
 
-    <!-- 11 ===================================================== -->
+    <!-- 12 ===================================================== -->
     <section id="equipment">
-      <h2><span class="h2-num">11</span>Equipment-Specific Effects</h2>
+      <h2><span class="h2-num">12</span>Equipment-Specific Effects</h2>
       <p>Each tool exposes its own sub-levers. Match the press class to batch size, and favour accurate temperature control for low-temp work.</p>
 
       <h3>Press class</h3>
@@ -869,9 +916,9 @@
       </div></div>
     </section>
 
-    <!-- 12 ===================================================== -->
+    <!-- 13 ===================================================== -->
     <section id="trichome">
-      <h2><span class="h2-num">12</span>Input / Trichome Interaction Matrix</h2>
+      <h2><span class="h2-num">13</span>Input / Trichome Interaction Matrix</h2>
       <p>Read the material — under a loupe or scope — and let it pick the settings. Micron is dictated by head size and debris, never chased for its own sake.</p>
       <div class="table-wrap"><div class="table-scroll">
       <table class="matrix">
@@ -890,9 +937,9 @@
       <blockquote>The rule the matrix encodes: <strong>small heads and fines escape or channel a coarse screen — the classic blowout trigger.</strong> Tighten the micron, slow the ramp, and don't overfill.</blockquote>
     </section>
 
-    <!-- 13 ===================================================== -->
+    <!-- 14 ===================================================== -->
     <section id="products">
-      <h2><span class="h2-num">13</span>Post-Press Product Paths</h2>
+      <h2><span class="h2-num">14</span>Post-Press Product Paths</h2>
       <p>The same fresh-pressed rosin diverges into every solventless product through the finishing levers. Press setpoint sets the starting oil; the cure sets the destination.</p>
       <div class="table-wrap"><div class="table-scroll">
       <table>
@@ -911,9 +958,9 @@
       <div class="box danger"><p class="box-title">The one irreversible rule</p><p><strong>Never start a diamond press hot.</strong> At high temperature THCa dissolves <em>into</em> the terpenes and flows out with them — your diamonds leave with the sauce. Progressive low-temp pressing removes terpenes gradually so the THCa runs out of solvent and stays behind. And decarb is one-way: decarbed THC will never crystallise.</p></div>
     </section>
 
-    <!-- 14 ===================================================== -->
+    <!-- 15 ===================================================== -->
     <section id="failures">
-      <h2><span class="h2-num">14</span>Main Failure Modes</h2>
+      <h2><span class="h2-num">15</span>Main Failure Modes</h2>
 
       <div class="failure">
         <h4><span class="failure-num">F-01</span>Blowout — bag ruptures, contamination floods the slab</h4>
@@ -957,9 +1004,9 @@
       </div>
     </section>
 
-    <!-- 15 ===================================================== -->
+    <!-- 16 ===================================================== -->
     <section id="hierarchy">
-      <h2><span class="h2-num">15</span>Practical Control Hierarchy</h2>
+      <h2><span class="h2-num">16</span>Practical Control Hierarchy</h2>
       <p>Set these in order. Each step constrains the next; skipping upstream steps wastes the downstream ones.</p>
       <h3>1. Fix the input ceiling first</h3>
       <p>Genetics, harvest maturity, wash/sift quality, and moisture set the maximum. You cannot out-press bad input.</p>
@@ -977,9 +1024,9 @@
       <p>Seal cold, dark, airtight. Log yield and grade, and adjust one lever next run.</p>
     </section>
 
-    <!-- 16 ===================================================== -->
+    <!-- 17 ===================================================== -->
     <section id="troubleshoot">
-      <h2><span class="h2-num">16</span>Minimal Operating Matrix for Troubleshooting</h2>
+      <h2><span class="h2-num">17</span>Minimal Operating Matrix for Troubleshooting</h2>
       <p>Observation → likely cause → first checks. Start at the top — most problems are upstream of the plates.</p>
       <div class="table-wrap"><div class="table-scroll">
       <table>
@@ -998,15 +1045,73 @@
       </div></div>
     </section>
 
-    <!-- 17 ===================================================== -->
+    <!-- 18 ===================================================== -->
     <section id="model">
-      <h2><span class="h2-num">17</span>The Simplest Mental Model</h2>
+      <h2><span class="h2-num">18</span>The Simplest Mental Model</h2>
       <p>If you keep only one thing, keep the chain:</p>
       <div class="chain">
         <div class="chain-label">The pressing chain</div>
         <p class="chain-text"><strong>Trichome grade &amp; moisture</strong> set the ceiling → <strong>heat</strong> lowers resin viscosity → <strong>pressure</strong> drives flow through the screen → <strong>micron</strong> selects what passes (pure oil vs fats &amp; plant matter) → so <strong>yield and purity trade</strong> against each other → <strong>collection temperature</strong> locks the texture → the <strong>cure</strong> decides badder, sauce or diamonds → <strong>cold, dark, sealed storage</strong> keeps it.</p>
       </div>
       <blockquote>Heat to flow, screen to clean, pressure only to finish — then cure for texture. Quality is set upstream; the press only preserves it or squanders it.</blockquote>
+    </section>
+
+    <!-- 19 ===================================================== -->
+    <section id="glossary">
+      <h2><span class="h2-num">19</span>Glossary</h2>
+      <p>Plain-English definitions for every term used in this guide. Skim it once and the technical sections read easily.</p>
+      <div class="glossary">
+        <p class="gloss"><span class="g-term">Amber trichome.</span> A resin head aged past its peak, turned amber. A little adds a heavier body effect; too much means lost potency.</p>
+        <p class="gloss"><span class="g-term">Badder / batter.</span> A creamy, whipped rosin texture, like frosting. Set by curing and stirring.</p>
+        <p class="gloss"><span class="g-term">Blowout.</span> When the mesh bag bursts under pressure and raw plant matter floods the oil, ruining the batch.</p>
+        <p class="gloss"><span class="g-term">Bubble hash.</span> Hash made by stirring cannabis in ice water so the brittle trichome heads snap off and sink through mesh bags.</p>
+        <p class="gloss"><span class="g-term">Cannabinoid.</span> The active compounds the plant makes (THC, THCA, CBD and others) that produce its effects.</p>
+        <p class="gloss"><span class="g-term">Capitate-stalked trichome.</span> The large, lollipop-shaped gland that holds the most resin — the prize fraction.</p>
+        <p class="gloss"><span class="g-term">Chromatography (reabsorption).</span> When oil that already flowed out soaks back into the spent material because flow stalled; shows up as poor yield.</p>
+        <p class="gloss"><span class="g-term">Cloudy / milky trichome.</span> A head at peak ripeness (peak THCA and terpenes); the target window at harvest.</p>
+        <p class="gloss"><span class="g-term">Cold chain.</span> The steps that must stay cold — harvest, wash, dry, collection, storage — because heat degrades quality there.</p>
+        <p class="gloss"><span class="g-term">Cold cure.</span> Resting sealed rosin cool (about 10–21 °C) for days to weeks to set a creamy badder.</p>
+        <p class="gloss"><span class="g-term">Contaminants / fines.</span> Plant bits and broken gland fragments that darken colour and hurt how cleanly hash melts.</p>
+        <p class="gloss"><span class="g-term">Cultivar.</span> A specific cannabis variety ("strain"); sets head size, oil character and how readily diamonds form.</p>
+        <p class="gloss"><span class="g-term">Cure.</span> Resting fresh rosin under controlled temperature to fix its final texture and protect flavour.</p>
+        <p class="gloss"><span class="g-term">Dab.</span> The common way to use rosin: a small dose flash-vaporised on a hot surface and inhaled.</p>
+        <p class="gloss"><span class="g-term">Decarb (decarboxylation).</span> Heating to convert raw THCA into active THC; required for vape carts, but it destroys diamonds.</p>
+        <p class="gloss"><span class="g-term">Diamonds (THCA diamonds).</span> Clear crystals of nearly pure THCA grown from rosin, sitting in a pool of "sauce."</p>
+        <p class="gloss"><span class="g-term">Dry sift (kief).</span> Hash made by rubbing dried plant over fine screens so trichome heads fall through; the powder is kief.</p>
+        <p class="gloss"><span class="g-term">Dwell time.</span> How long the bag is held squeezed under heat during a press.</p>
+        <p class="gloss"><span class="g-term">Effective pressure (PSI).</span> The force actually felt by the bag (force ÷ plate area) — what matters, not the raw gauge number.</p>
+        <p class="gloss"><span class="g-term">Emulsion.</span> A hazy, unstable blend caused by water trapped in the oil; the rosin looks cloudy.</p>
+        <p class="gloss"><span class="g-term">Freeze-dryer (lyophiliser).</span> A machine that pulls water out under vacuum while frozen — drying hash with no heat. The quality option.</p>
+        <p class="gloss"><span class="g-term">Fresh-frozen.</span> Plant flash-frozen right after cutting and never dried, preserving the "live" aroma; the basis of live rosin.</p>
+        <p class="gloss"><span class="g-term">Full-melt.</span> Top-grade hash (5–6 star) pure enough to melt to almost nothing on a hot nail; the cleanest press input.</p>
+        <p class="gloss"><span class="g-term">Hash.</span> Trichome heads gathered into a powder or paste, before pressing.</p>
+        <p class="gloss"><span class="g-term">Hash hole.</span> A pre-rolled joint with a core of hash or rosin running down the middle.</p>
+        <p class="gloss"><span class="g-term">Lipids / waxes.</span> Natural plant fats that can cloud rosin; flower carries more of them than hash.</p>
+        <p class="gloss"><span class="g-term">Live rosin.</span> Rosin pressed from fresh-frozen hash; prized for the most vivid aroma and flavour.</p>
+        <p class="gloss"><span class="g-term">Melt / star grade (1–6★).</span> A quality scale for hash by how cleanly it melts; 6-star is full-melt, 1–2 star is edible-only.</p>
+        <p class="gloss"><span class="g-term">Micron (µm).</span> One-thousandth of a millimetre; the mesh size of the press bag. Smaller number = finer mesh = cleaner rosin, lower yield.</p>
+        <p class="gloss"><span class="g-term">Monoterpenes.</span> The lightest, most volatile terpenes (such as pinene and myrcene); the first aromas lost to heat.</p>
+        <p class="gloss"><span class="g-term">Nucleation.</span> The moment rosin begins to crystallise or "butter up"; triggered by cold, time, or stirring.</p>
+        <p class="gloss"><span class="g-term">Parchment.</span> The non-stick paper the rosin is pressed onto and scraped from.</p>
+        <p class="gloss"><span class="g-term">PID.</span> A precise temperature controller that holds the press plates steady at the set temperature.</p>
+        <p class="gloss"><span class="g-term">Plate / platen.</span> The two heated metal surfaces that squeeze the bag.</p>
+        <p class="gloss"><span class="g-term">Pre-press.</span> Forming the material into a dense, air-free puck before pressing, to stop channels and blowouts.</p>
+        <p class="gloss"><span class="g-term">Puck.</span> The flattened, spent material left inside the bag after pressing.</p>
+        <p class="gloss"><span class="g-term">Relative humidity (RH).</span> How moist air or material is, as a percentage; affects flow and blowout risk.</p>
+        <p class="gloss"><span class="g-term">Resin.</span> The plant's sticky oil inside the trichome heads — the thing being extracted.</p>
+        <p class="gloss"><span class="g-term">Rosin.</span> The oil pressed out of hash or flower using only heat and pressure; the finished concentrate.</p>
+        <p class="gloss"><span class="g-term">Sauce.</span> The liquid, terpene-rich oil surrounding THCA diamonds. Full name: high-terpene solventless hash oil (HTSHO).</p>
+        <p class="gloss"><span class="g-term">Screen / mesh / bag.</span> The micron filter the hash is pressed inside; holds solids back and lets oil through.</p>
+        <p class="gloss"><span class="g-term">Shatter / sap.</span> Glassier, runnier rosin textures, more common from hotter presses.</p>
+        <p class="gloss"><span class="g-term">Solventless.</span> Made with only force, heat, water and ice — never butane, CO₂ or alcohol.</p>
+        <p class="gloss"><span class="g-term">Static glove tek.</span> A cleaning trick where a static-charged glove lifts pure trichome heads off a screen, leaving debris behind.</p>
+        <p class="gloss"><span class="g-term">Terpene.</span> The aromatic oils that give cannabis its smell and taste; delicate and easily lost to heat.</p>
+        <p class="gloss"><span class="g-term">THCA / THC.</span> THCA is the raw, non-intoxicating acid in fresh material; heat turns it into active THC. Only THCA forms diamonds.</p>
+        <p class="gloss"><span class="g-term">Trichome.</span> The tiny resin gland on the plant — the visible "crystal" — whose head holds the oil.</p>
+        <p class="gloss"><span class="g-term">Viscosity.</span> How thick or runny the oil is; heat lowers viscosity so rosin flows.</p>
+        <p class="gloss"><span class="g-term">Water activity (a_w).</span> A precise measure of free moisture (0–1) used to judge when flower is properly dried (about 0.55–0.62).</p>
+        <p class="gloss"><span class="g-term">Yield.</span> How much rosin you get back, usually given as a percentage of the hash weight pressed.</p>
+      </div>
     </section>
 
   </main>
