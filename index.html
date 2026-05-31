@@ -366,6 +366,20 @@
   .gloss { break-inside: avoid; margin: 0 0 1rem; font-size: .9rem; line-height: 1.5; color: var(--ink-soft); }
   .gloss .g-term { font-weight: 700; color: var(--resin-deep); }
 
+  /* ---------- FIGURES / SVG ---------- */
+  figure.fig { margin: 1.75rem 0 2rem; padding: 1.25rem 1.25rem 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+  figure.fig svg { display: block; width: 100%; height: auto; }
+  .fig-title { font-family: var(--mono); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--resin); font-weight: 700; margin: 0 0 .75rem; text-align: center; }
+  figure.fig figcaption { margin: .85rem 0 0; font-size: .82rem; color: var(--ink-muted); font-style: italic; text-align: center; line-height: 1.45; }
+  .s-axis { stroke: var(--ink-muted); stroke-width: 1.5; fill: none; }
+  .s-grid { stroke: var(--line); stroke-width: 1; }
+  .s-lbl { font-family: var(--sans); font-size: 13px; fill: var(--ink-soft); }
+  .s-lbl-sm { font-family: var(--sans); font-size: 11px; fill: var(--ink-muted); }
+  .s-lbl-b { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--ink); }
+  .s-yield { fill: none; stroke: var(--resin); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .s-qual { fill: none; stroke: var(--frost); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .s-warn { fill: none; stroke: var(--rust); stroke-width: 2.5; stroke-dasharray: 6 4; stroke-linecap: round; }
+
   /* ---------- PRINT ---------- */
   @media print {
     body { background: white; }
@@ -439,6 +453,34 @@
 
       <p>A cannabis plant is covered in thousands of tiny, mushroom-shaped glands called <strong>trichomes</strong> — the frosty "crystals" you can see on good flower. Each trichome head is a microscopic sac of <strong>resin</strong>: the sticky oil that carries almost all of the plant's potency, smell and flavour. Every solventless concentrate is really just <em>those heads, collected and then gently squeezed</em> — with no chemical solvents like butane or alcohol anywhere in the process.</p>
 
+      <figure class="fig">
+        <p class="fig-title">Anatomy of a trichome</p>
+        <svg viewBox="0 0 520 230" role="img" aria-label="Diagram of cannabis trichomes: a stalk topped by a resin-filled head.">
+          <defs>
+            <radialGradient id="tg1" cx="40%" cy="35%" r="70%">
+              <stop offset="0" stop-color="#f3d9ad"/><stop offset="1" stop-color="#b8762c"/>
+            </radialGradient>
+          </defs>
+          <rect x="24" y="200" width="472" height="16" rx="6" fill="#f4efe6"/>
+          <line x1="24" y1="200" x2="496" y2="200" stroke="#c9b79a" stroke-width="2"/>
+          <path d="M145,200 L148,150 L152,150 L155,200 Z" fill="#e4d9bf" stroke="#b8a880" stroke-width="1"/>
+          <circle cx="150" cy="136" r="16" fill="url(#tg1)" stroke="#6e3f17" stroke-width="1.5"/>
+          <path d="M372,200 L376,126 L384,126 L388,200 Z" fill="#e4d9bf" stroke="#b8a880" stroke-width="1"/>
+          <circle cx="380" cy="108" r="22" fill="url(#tg1)" stroke="#6e3f17" stroke-width="1.5"/>
+          <path d="M252,200 L256,98 L264,98 L268,200 Z" fill="#e4d9bf" stroke="#b8a880" stroke-width="1.5"/>
+          <circle cx="260" cy="78" r="31" fill="url(#tg1)" stroke="#6e3f17" stroke-width="2"/>
+          <ellipse cx="250" cy="68" rx="9" ry="6" fill="#ffffff" opacity="0.45"/>
+          <line x1="289" y1="70" x2="360" y2="48" stroke="#6e3f17" stroke-width="1"/>
+          <text class="s-lbl-b" x="365" y="45">Resin head</text>
+          <text class="s-lbl-sm" x="365" y="61">the oil you want — potency,</text>
+          <text class="s-lbl-sm" x="365" y="75">aroma &amp; flavour live here</text>
+          <line x1="264" y1="150" x2="330" y2="170" stroke="#6e3f17" stroke-width="1"/>
+          <text class="s-lbl" x="335" y="174">Stalk</text>
+          <text class="s-lbl-sm" x="40" y="224">Plant surface (leaf / bud)</text>
+        </svg>
+        <figcaption>The frosty "crystals" on cannabis are trichomes. Solventless hash-making is the art of collecting these heads and squeezing the resin out of them.</figcaption>
+      </figure>
+
       <p>It happens in two halves:</p>
       <ol>
         <li><strong>Make the hash.</strong> Knock the trichome heads off the plant and gather them into a powder or paste. Two common ways: stir the plant in <em>ice water</em> so the brittle heads snap off and sink (<strong>bubble hash</strong>), or rub dried plant over fine <em>screens</em> (<strong>dry sift</strong>).</li>
@@ -446,6 +488,45 @@
       </ol>
 
       <p>That is the whole idea — <strong>heat + pressure, no solvents</strong>. The craft is in restraint: too much heat boils away the flavour, and too much force bursts the bag and pushes plant matter through the mesh. After pressing, the rosin is <strong>cured</strong> (rested under controlled warmth or cold) to set its final texture, then either <strong>dabbed</strong> (a small dose flash-vaporised on a hot surface and inhaled) or loaded into a vape cartridge.</p>
+
+      <figure class="fig">
+        <p class="fig-title">How a rosin press works</p>
+        <svg viewBox="0 0 560 300" role="img" aria-label="Cross-section of a rosin press: heated plates squeeze a mesh bag of hash, and rosin flows out onto parchment.">
+          <defs>
+            <linearGradient id="plate2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#8a5320"/><stop offset="1" stop-color="#5c3413"/>
+            </linearGradient>
+          </defs>
+          <text class="s-lbl-b" x="280" y="22" text-anchor="middle" fill="#9c4a3a">PRESSURE</text>
+          <g stroke="#9c4a3a" stroke-width="3" fill="#9c4a3a">
+            <line x1="200" y1="30" x2="200" y2="62"/><polygon points="200,72 193,60 207,60"/>
+            <line x1="280" y1="30" x2="280" y2="62"/><polygon points="280,72 273,60 287,60"/>
+            <line x1="360" y1="30" x2="360" y2="62"/><polygon points="360,72 353,60 367,60"/>
+          </g>
+          <rect x="120" y="78" width="320" height="34" rx="5" fill="url(#plate2)"/>
+          <text class="s-lbl" x="280" y="100" text-anchor="middle" fill="#fbf9f4">Heated plate</text>
+          <rect x="168" y="120" width="224" height="50" rx="12" fill="#f6ead6" stroke="#d4923f" stroke-width="2"/>
+          <g fill="#b8762c">
+            <circle cx="200" cy="145" r="4"/><circle cx="222" cy="135" r="4"/><circle cx="244" cy="150" r="4"/><circle cx="266" cy="138" r="4"/><circle cx="288" cy="148" r="4"/><circle cx="310" cy="136" r="4"/><circle cx="332" cy="150" r="4"/><circle cx="354" cy="140" r="4"/>
+          </g>
+          <line x1="395" y1="145" x2="468" y2="130" stroke="#6e3f17" stroke-width="1"/>
+          <text class="s-lbl" x="472" y="128">Micron bag</text>
+          <text class="s-lbl-sm" x="472" y="143">(mesh) + hash</text>
+          <rect x="120" y="178" width="320" height="34" rx="5" fill="url(#plate2)"/>
+          <text class="s-lbl" x="280" y="200" text-anchor="middle" fill="#fbf9f4">Heated plate</text>
+          <g stroke="#d4923f" stroke-width="2" fill="none">
+            <path d="M132,128 q6,-6 12,0 q6,6 12,0"/><path d="M132,164 q6,-6 12,0 q6,6 12,0"/>
+          </g>
+          <text class="s-lbl-sm" x="92" y="150" fill="#b8762c">HEAT</text>
+          <path d="M170,168 q-20,18 -22,54" stroke="#d4923f" stroke-width="3" fill="none"/>
+          <path d="M390,168 q20,18 22,54" stroke="#d4923f" stroke-width="3" fill="none"/>
+          <text class="s-lbl" x="118" y="258" fill="#6e3f17">Rosin flows out</text>
+          <text class="s-lbl" x="358" y="258" fill="#6e3f17">Rosin flows out</text>
+          <line x1="110" y1="270" x2="450" y2="270" stroke="#c9b79a" stroke-width="2"/>
+          <text class="s-lbl-sm" x="280" y="288" text-anchor="middle">Parchment paper</text>
+        </svg>
+        <figcaption>Two gently heated plates squeeze the bag. Heat thins the resin; pressure pushes it through the mesh as golden rosin, leaving plant matter trapped inside.</figcaption>
+      </figure>
 
       <div class="defs">
         <div class="def"><span class="dt">Trichome</span><p class="dd">The tiny resin gland on the plant — the visible "crystal." Its head holds the oil you want.</p></div>
@@ -557,6 +638,36 @@
         <strong>Balanced sweet spot (flower):</strong> 88–99 °C — strong yield, minimal terpene loss; good default for unknown <em>flower</em>. <br>
         <strong>High-temp press (yield / sauce / carts):</strong> 99–104 °C — max yield, fastest flow, darker; use to rescue degraded material.</p>
       </div>
+
+      <figure class="fig">
+        <p class="fig-title">Platen temperature map</p>
+        <svg viewBox="0 0 560 175" role="img" aria-label="Temperature scale from 60 to 104 Celsius showing the hash, flower, balanced and high-temp press bands.">
+          <defs>
+            <linearGradient id="tband4" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#e0b06b"/><stop offset="0.5" stop-color="#b8762c"/><stop offset="1" stop-color="#9c4a3a"/>
+            </linearGradient>
+          </defs>
+          <rect x="60" y="12" width="280" height="22" rx="11" fill="#e4eef3" stroke="#b6d3df"/>
+          <text class="s-lbl-sm" x="74" y="27" fill="#2b5d74">❄ Cold-cure hold 10–21 °C — after pressing, not on the plates</text>
+          <rect x="60" y="58" width="460" height="30" rx="4" fill="url(#tband4)"/>
+          <g stroke="#4a4034" stroke-width="1">
+            <line x1="60" y1="52" x2="60" y2="94"/><line x1="234" y1="52" x2="234" y2="94"/><line x1="346" y1="52" x2="346" y2="94"/><line x1="459" y1="52" x2="459" y2="94"/><line x1="510" y1="52" x2="510" y2="94"/>
+          </g>
+          <g class="s-lbl-sm" text-anchor="middle">
+            <text x="60" y="48">60</text><text x="234" y="48">77</text><text x="346" y="48">88</text><text x="459" y="48">99</text><text x="510" y="48">104</text>
+          </g>
+          <g class="s-lbl-sm" text-anchor="middle">
+            <text x="147" y="112">Hash / full-melt</text>
+            <text x="290" y="112">Premium flower</text>
+            <text x="402" y="112">Balanced (flower)</text>
+            <text x="490" y="112">High-temp</text>
+            <text x="490" y="126">yield · carts</text>
+          </g>
+          <text class="s-lbl-sm" x="60" y="152" fill="#2b5d74">◄ cooler = more flavour, lighter, lower yield</text>
+          <text class="s-lbl-sm" x="520" y="152" text-anchor="end" fill="#9c4a3a">hotter = more yield, darker, less terpene ►</text>
+        </svg>
+        <figcaption>Where each input material and goal sits on the platen-temperature scale. Hash presses coolest; flower needs more heat; the hottest end trades flavour for yield.</figcaption>
+      </figure>
     </section>
 
     <!-- 05 ===================================================== -->
@@ -616,6 +727,37 @@
         </div>
       </div>
       <blockquote>The master tension that links all four: <strong>Yield ↔ Quality.</strong> Almost every adjustment trades one for the other. Decide which you're optimising <em>before</em> you touch a lever.</blockquote>
+
+      <figure class="fig">
+        <p class="fig-title">The master trade-off: yield vs quality</p>
+        <svg viewBox="0 0 560 320" role="img" aria-label="Line chart: as plate temperature rises, yield increases while terpene retention falls; the lines cross in the middle.">
+          <rect x="70" y="50" width="170" height="205" fill="#e4eef3" opacity="0.5"/>
+          <rect x="460" y="50" width="60" height="205" fill="#f6ead6" opacity="0.7"/>
+          <line class="s-grid" x1="70" y1="50" x2="520" y2="50"/>
+          <line class="s-grid" x1="70" y1="152.5" x2="520" y2="152.5"/>
+          <line class="s-grid" x1="70" y1="255" x2="520" y2="255"/>
+          <line class="s-axis" x1="70" y1="50" x2="70" y2="255"/>
+          <line class="s-axis" x1="70" y1="255" x2="520" y2="255"/>
+          <line x1="300" y1="113" x2="300" y2="255" stroke="#877c6b" stroke-width="1" stroke-dasharray="4 4"/>
+          <polyline class="s-yield" points="70,183 180,153 320,112 460,79 510,64"/>
+          <polyline class="s-qual" points="70,60 180,75 320,116 460,169 510,198"/>
+          <g text-anchor="middle">
+            <text class="s-lbl-sm" x="70" y="272">60</text><text class="s-lbl-sm" x="180" y="272">71</text><text class="s-lbl-sm" x="320" y="272">85</text><text class="s-lbl-sm" x="460" y="272">99</text><text class="s-lbl-sm" x="510" y="272">104</text>
+          </g>
+          <text class="s-lbl" x="295" y="298" text-anchor="middle">Plate temperature (°C) →</text>
+          <text class="s-lbl" x="22" y="155" transform="rotate(-90 22 155)" text-anchor="middle">Relative %</text>
+          <g text-anchor="end">
+            <text class="s-lbl-sm" x="64" y="54">100</text><text class="s-lbl-sm" x="64" y="156">50</text><text class="s-lbl-sm" x="64" y="259">0</text>
+          </g>
+          <text class="s-lbl-sm" x="155" y="246" text-anchor="middle" fill="#2b5d74">cold — flavour (hash)</text>
+          <text class="s-lbl-sm" x="490" y="246" text-anchor="middle" fill="#9c4a3a">hot — yield</text>
+          <line class="s-yield" x1="80" y1="36" x2="108" y2="36"/>
+          <text class="s-lbl" x="113" y="40">Yield</text>
+          <line class="s-qual" x1="200" y1="36" x2="228" y2="36"/>
+          <text class="s-lbl" x="233" y="40">Terpene / quality retention</text>
+        </svg>
+        <figcaption>Push the temperature up and yield climbs — but terpenes and clarity fall. Where the lines cross is a judgement call: cool for flavour, hot for volume.</figcaption>
+      </figure>
     </section>
 
     <!-- 07 ===================================================== -->
@@ -877,6 +1019,32 @@
         <li>Release. Yield from clean 5–6★ input typically runs <strong>50–80%</strong>.</li>
       </ol>
 
+      <figure class="fig">
+        <p class="fig-title">Pressure ramp: slow wins</p>
+        <svg viewBox="0 0 560 300" role="img" aria-label="Pressure versus time chart contrasting a slow recommended ramp with a too-fast ramp that causes a blowout.">
+          <g stroke="#e7e2d6" stroke-width="1" stroke-dasharray="4 4">
+            <line x1="156" y1="45" x2="156" y2="240"/><line x1="223" y1="45" x2="223" y2="240"/><line x1="505" y1="45" x2="505" y2="240"/>
+          </g>
+          <line class="s-axis" x1="65" y1="45" x2="65" y2="240"/>
+          <line class="s-axis" x1="65" y1="240" x2="520" y2="240"/>
+          <polyline class="s-yield" points="65,230 156,224 223,100 475,84 505,84 520,234"/>
+          <polyline class="s-warn" points="65,230 95,133 132,53"/>
+          <polygon points="132,53 123,60 138,65" fill="#9c4a3a"/>
+          <text x="142" y="50" class="s-lbl-b" fill="#9c4a3a">⚠ blowout</text>
+          <g class="s-lbl-sm" text-anchor="middle">
+            <text x="110" y="258">Preheat</text><text x="190" y="258">Ramp</text><text x="362" y="258">Hold — press to flow-stop</text>
+          </g>
+          <text class="s-lbl-sm" x="513" y="258" text-anchor="middle">Release</text>
+          <text class="s-lbl" x="290" y="285" text-anchor="middle">Time →</text>
+          <text class="s-lbl" x="22" y="145" transform="rotate(-90 22 145)" text-anchor="middle">Pressure →</text>
+          <line class="s-yield" x1="80" y1="34" x2="108" y2="34"/>
+          <text class="s-lbl" x="113" y="38">Recommended</text>
+          <line class="s-warn" x1="250" y1="34" x2="278" y2="34"/>
+          <text class="s-lbl" x="283" y="38">Too fast → blowout</text>
+        </svg>
+        <figcaption>Preheat with little pressure, then ramp up slowly and hold until flow stops. Rushing the ramp (red) spikes pressure before the resin can escape — and bursts the bag.</figcaption>
+      </figure>
+
       <h3>10.9 · Collection <span style="font-weight:400;color:var(--frost-deep)">(cold chain)</span></h3>
       <p>Collect immediately with a cold dab tool onto fresh parchment, then into pre-chilled glass; seal. Cold collection preserves terpenes and sets a cleaner texture. Move straight to your product path (Section 13).</p>
     </section>
@@ -920,6 +1088,44 @@
     <section id="trichome">
       <h2><span class="h2-num">13</span>Input / Trichome Interaction Matrix</h2>
       <p>Read the material — under a loupe or scope — and let it pick the settings. Micron is dictated by head size and debris, never chased for its own sake.</p>
+
+      <figure class="fig">
+        <p class="fig-title">Match the mesh to the trichome head</p>
+        <svg viewBox="0 0 560 250" role="img" aria-label="Three columns mapping large, medium and small trichome heads to coarser or finer micron bags.">
+          <defs>
+            <radialGradient id="tg6" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f3d9ad"/><stop offset="1" stop-color="#b8762c"/></radialGradient>
+          </defs>
+          <circle cx="110" cy="58" r="34" fill="url(#tg6)" stroke="#6e3f17" stroke-width="1.5"/>
+          <text class="s-lbl-b" x="110" y="116" text-anchor="middle">≥ 100 µm</text>
+          <text class="s-lbl-sm" x="110" y="131" text-anchor="middle">big, uniform, clean</text>
+          <rect x="78" y="146" width="64" height="44" rx="3" fill="#faf3e7" stroke="#b8a880"/>
+          <g stroke="#b8a880" stroke-width="1">
+            <line x1="98" y1="146" x2="98" y2="190"/><line x1="118" y1="146" x2="118" y2="190"/><line x1="78" y1="161" x2="142" y2="161"/><line x1="78" y1="176" x2="142" y2="176"/>
+          </g>
+          <text class="s-lbl-b" x="110" y="210" text-anchor="middle" fill="#6e3f17">90 µm bag</text>
+          <text class="s-lbl-sm" x="110" y="228" text-anchor="middle">max yield</text>
+          <circle cx="280" cy="66" r="26" fill="url(#tg6)" stroke="#6e3f17" stroke-width="1.5"/>
+          <text class="s-lbl-b" x="280" y="116" text-anchor="middle">70–100 µm</text>
+          <text class="s-lbl-sm" x="280" y="131" text-anchor="middle">typical mid-range</text>
+          <rect x="248" y="146" width="64" height="44" rx="3" fill="#faf3e7" stroke="#b8a880"/>
+          <g stroke="#b8a880" stroke-width="1">
+            <line x1="262" y1="146" x2="262" y2="190"/><line x1="276" y1="146" x2="276" y2="190"/><line x1="290" y1="146" x2="290" y2="190"/><line x1="304" y1="146" x2="304" y2="190"/><line x1="248" y1="157" x2="312" y2="157"/><line x1="248" y1="168" x2="312" y2="168"/><line x1="248" y1="179" x2="312" y2="179"/>
+          </g>
+          <text class="s-lbl-b" x="280" y="210" text-anchor="middle" fill="#6e3f17">45–73 µm</text>
+          <text class="s-lbl-sm" x="280" y="228" text-anchor="middle">balanced</text>
+          <circle cx="450" cy="76" r="15" fill="url(#tg6)" stroke="#6e3f17" stroke-width="1.5"/>
+          <g fill="#b8a880"><circle cx="424" cy="64" r="3"/><circle cx="476" cy="68" r="3"/><circle cx="436" cy="88" r="2.5"/><circle cx="468" cy="90" r="2.5"/></g>
+          <text class="s-lbl-b" x="450" y="116" text-anchor="middle">&lt; 70 µm + fines</text>
+          <text class="s-lbl-sm" x="450" y="131" text-anchor="middle">small / broken</text>
+          <rect x="418" y="146" width="64" height="44" rx="3" fill="#faf3e7" stroke="#b8a880"/>
+          <g stroke="#b8a880" stroke-width="0.8">
+            <line x1="427" y1="146" x2="427" y2="190"/><line x1="436" y1="146" x2="436" y2="190"/><line x1="445" y1="146" x2="445" y2="190"/><line x1="454" y1="146" x2="454" y2="190"/><line x1="463" y1="146" x2="463" y2="190"/><line x1="472" y1="146" x2="472" y2="190"/><line x1="418" y1="157" x2="482" y2="157"/><line x1="418" y1="166" x2="482" y2="166"/><line x1="418" y1="175" x2="482" y2="175"/><line x1="418" y1="184" x2="482" y2="184"/>
+          </g>
+          <text class="s-lbl-b" x="450" y="210" text-anchor="middle" fill="#6e3f17">25–37 µm</text>
+          <text class="s-lbl-sm" x="450" y="228" text-anchor="middle" fill="#9c4a3a">⚠ blowout-prone</text>
+        </svg>
+        <figcaption>Bigger, cleaner heads can use a coarser bag for more yield. Small heads and broken fragments slip through or clog a coarse screen, so they need a tighter bag and a slower, gentler ramp.</figcaption>
+      </figure>
       <div class="table-wrap"><div class="table-scroll">
       <table class="matrix">
         <thead><tr><th>Material / trichome read</th><th>Bag micron</th><th>Plate temp</th><th>Ramp</th><th>Best product</th></tr></thead>
@@ -941,6 +1147,40 @@
     <section id="products">
       <h2><span class="h2-num">14</span>Post-Press Product Paths</h2>
       <p>The same fresh-pressed rosin diverges into every solventless product through the finishing levers. Press setpoint sets the starting oil; the cure sets the destination.</p>
+
+      <figure class="fig">
+        <p class="fig-title">One rosin, many products</p>
+        <svg viewBox="0 0 560 300" role="img" aria-label="Branching diagram: fresh rosin becomes badder, sauce, diamonds, cart oil or a hash hole depending on the cure.">
+          <g fill="none" stroke="#d4923f" stroke-width="2">
+            <path d="M150,150 C245,150 255,41 360,41"/>
+            <path d="M150,150 C245,150 255,95 360,95"/>
+            <path d="M150,150 C255,150 255,149 360,149"/>
+            <path d="M150,150 C245,150 255,203 360,203"/>
+            <path d="M150,150 C245,150 255,257 360,257"/>
+          </g>
+          <g class="s-lbl-sm" text-anchor="middle" fill="#6e3f17">
+            <text x="256" y="64">cold cure 10–21 °C</text>
+            <text x="256" y="107">warm cure</text>
+            <text x="256" y="139">nucleate + progressive press</text>
+            <text x="256" y="218">decarb 60–104 °C</text>
+            <text x="256" y="272">roll into a joint</text>
+          </g>
+          <rect x="20" y="127" width="130" height="46" rx="8" fill="#6e3f17"/>
+          <text class="s-lbl-b" x="85" y="146" text-anchor="middle" fill="#fbf9f4">Fresh-pressed</text>
+          <text class="s-lbl-b" x="85" y="163" text-anchor="middle" fill="#fbf9f4">rosin</text>
+          <rect x="360" y="22" width="180" height="38" rx="8" fill="#d4923f"/>
+          <text class="s-lbl-b" x="450" y="46" text-anchor="middle" fill="#3a2008">Badder / jam</text>
+          <rect x="360" y="76" width="180" height="38" rx="8" fill="#c9a14a"/>
+          <text class="s-lbl-b" x="450" y="100" text-anchor="middle" fill="#3a2008">Sauce</text>
+          <rect x="360" y="130" width="180" height="38" rx="8" fill="#e4eef3" stroke="#3f7d99"/>
+          <text class="s-lbl-b" x="450" y="154" text-anchor="middle" fill="#2b5d74">Diamonds &amp; sauce</text>
+          <rect x="360" y="184" width="180" height="38" rx="8" fill="#b8762c"/>
+          <text class="s-lbl-b" x="450" y="208" text-anchor="middle" fill="#fbf9f4">Vape / cart oil</text>
+          <rect x="360" y="238" width="180" height="38" rx="8" fill="#f6ead6" stroke="#d4923f"/>
+          <text class="s-lbl-b" x="450" y="262" text-anchor="middle" fill="#6e3f17">Hash hole core</text>
+        </svg>
+        <figcaption>The press gives you fresh rosin; the cure decides what it becomes. Same starting oil, very different finished products.</figcaption>
+      </figure>
       <div class="table-wrap"><div class="table-scroll">
       <table>
         <thead><tr><th>Product</th><th>Press setpoint</th><th>Cure / finish</th><th>Result</th></tr></thead>
