@@ -567,7 +567,120 @@
         <div class="flow-step"><span class="n">10</span><span class="t">Cure</span><span class="d">cold-cure, warm-cure or decarb</span></div>
         <div class="flow-step coldstep"><span class="n">11</span><span class="t">Store</span><span class="d">sealed glass, cold, dark</span></div>
       </div>
-      <p>Sections 10–13 break each stage down with its own parameters. The matrices (07, 08, 12) and failure modes (14) tell you which lever to move when a stage goes wrong.</p>
+      <figure class="fig">
+        <p class="fig-title">The whole process, farm to dab</p>
+        <svg viewBox="0 0 740 660" style="font-family: var(--sans)" role="img" aria-label="Farm-to-dab process map: harvest, freeze or dry, wash or sift, dry the hash, grade, pre-press, press, collect, choose product, cure, store, then dab.">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#b8762c"/>
+            </marker>
+          </defs>
+          <rect x="40" y="18" width="15" height="15" rx="3" fill="#e4eef3" stroke="#b6d3df"/>
+          <text class="s-lbl-sm" x="62" y="30">Cold-chain step — keep it cold</text>
+          <rect x="330" y="18" width="15" height="15" rx="3" fill="#f6ead6" stroke="#d4923f"/>
+          <text class="s-lbl-sm" x="352" y="30">Heat / warm step</text>
+          <g stroke="#b8762c" stroke-width="2.5" fill="none">
+            <line x1="220" y1="118" x2="274" y2="118" marker-end="url(#arr)"/>
+            <line x1="460" y1="118" x2="514" y2="118" marker-end="url(#arr)"/>
+            <line x1="610" y1="178" x2="610" y2="202" marker-end="url(#arr)"/>
+            <line x1="520" y1="268" x2="466" y2="268" marker-end="url(#arr)"/>
+            <line x1="280" y1="268" x2="226" y2="268" marker-end="url(#arr)"/>
+            <line x1="130" y1="328" x2="130" y2="352" marker-end="url(#arr)"/>
+            <line x1="220" y1="418" x2="274" y2="418" marker-end="url(#arr)"/>
+            <line x1="460" y1="418" x2="514" y2="418" marker-end="url(#arr)"/>
+            <line x1="610" y1="478" x2="610" y2="502" marker-end="url(#arr)"/>
+            <line x1="520" y1="568" x2="466" y2="568" marker-end="url(#arr)"/>
+            <line x1="280" y1="568" x2="226" y2="568" marker-end="url(#arr)"/>
+          </g>
+          <!-- S1 Harvest -->
+          <rect x="40" y="58" width="180" height="120" rx="10" fill="#e4eef3" stroke="#b6d3df" stroke-width="1.5"/>
+          <circle cx="58" cy="76" r="11" fill="#3f7d99"/><text x="58" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">1</text>
+          <path d="M130,82 C118,90 118,104 130,114 C142,104 142,90 130,82 Z" fill="none" stroke="#2b5d74" stroke-width="2"/>
+          <line x1="130" y1="86" x2="130" y2="112" stroke="#2b5d74" stroke-width="1.5"/>
+          <text x="130" y="144" text-anchor="middle" font-size="14" font-weight="700" fill="#2b5d74">Harvest</text>
+          <text x="130" y="162" text-anchor="middle" font-size="11" fill="#877c6b">80–90% cloudy</text>
+          <!-- S2 Freeze / Dry -->
+          <rect x="280" y="58" width="180" height="120" rx="10" fill="#e4eef3" stroke="#b6d3df" stroke-width="1.5"/>
+          <circle cx="298" cy="76" r="11" fill="#3f7d99"/><text x="298" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">2</text>
+          <g stroke="#2b5d74" stroke-width="2" stroke-linecap="round"><line x1="354" y1="98" x2="386" y2="98"/><line x1="362" y1="84" x2="378" y2="112"/><line x1="362" y1="112" x2="378" y2="84"/></g>
+          <text x="370" y="144" text-anchor="middle" font-size="14" font-weight="700" fill="#2b5d74">Freeze / Dry</text>
+          <text x="370" y="162" text-anchor="middle" font-size="11" fill="#877c6b">fresh-freeze or dry</text>
+          <!-- S3 Wash / Sift -->
+          <rect x="520" y="58" width="180" height="120" rx="10" fill="#e4eef3" stroke="#b6d3df" stroke-width="1.5"/>
+          <circle cx="538" cy="76" r="11" fill="#3f7d99"/><text x="538" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">3</text>
+          <path d="M610,84 C619,95 617,106 610,106 C603,106 601,95 610,84 Z" fill="#cfe0e8" stroke="#2b5d74" stroke-width="1.5"/>
+          <path d="M596,113 q7,-5 14,0 q7,5 14,0" fill="none" stroke="#2b5d74" stroke-width="1.5"/>
+          <text x="610" y="144" text-anchor="middle" font-size="14" font-weight="700" fill="#2b5d74">Wash / Sift</text>
+          <text x="610" y="162" text-anchor="middle" font-size="11" fill="#877c6b">ice water or screens</text>
+          <!-- S4 Dry the hash -->
+          <rect x="520" y="208" width="180" height="120" rx="10" fill="#e4eef3" stroke="#b6d3df" stroke-width="1.5"/>
+          <circle cx="538" cy="226" r="11" fill="#3f7d99"/><text x="538" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">4</text>
+          <rect x="592" y="234" width="36" height="28" rx="3" fill="none" stroke="#2b5d74" stroke-width="2"/>
+          <g stroke="#2b5d74" stroke-width="1.5" stroke-linecap="round"><line x1="601" y1="248" x2="619" y2="248"/><line x1="605" y1="240" x2="615" y2="256"/><line x1="605" y1="256" x2="615" y2="240"/></g>
+          <text x="610" y="294" text-anchor="middle" font-size="14" font-weight="700" fill="#2b5d74">Dry the hash</text>
+          <text x="610" y="312" text-anchor="middle" font-size="11" fill="#877c6b">freeze-dry</text>
+          <!-- S5 Grade -->
+          <rect x="280" y="208" width="180" height="120" rx="10" fill="#f4efe6" stroke="#e7e2d6" stroke-width="1.5"/>
+          <circle cx="298" cy="226" r="11" fill="#877c6b"/><text x="298" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">5</text>
+          <text x="370" y="256" text-anchor="middle" font-size="22" fill="#c9a14a">★★★</text>
+          <text x="370" y="294" text-anchor="middle" font-size="14" font-weight="700" fill="#4a4034">Grade</text>
+          <text x="370" y="312" text-anchor="middle" font-size="11" fill="#877c6b">melt test → 1–6★</text>
+          <!-- S6 Pre-press -->
+          <rect x="40" y="208" width="180" height="120" rx="10" fill="#f4efe6" stroke="#e7e2d6" stroke-width="1.5"/>
+          <circle cx="58" cy="226" r="11" fill="#877c6b"/><text x="58" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">6</text>
+          <ellipse cx="130" cy="244" rx="22" ry="8" fill="none" stroke="#877c6b" stroke-width="1" opacity="0.55"/>
+          <ellipse cx="130" cy="250" rx="22" ry="9" fill="#f6ead6" stroke="#877c6b" stroke-width="1.5"/>
+          <text x="130" y="294" text-anchor="middle" font-size="14" font-weight="700" fill="#4a4034">Pre-press</text>
+          <text x="130" y="312" text-anchor="middle" font-size="11" fill="#877c6b">condition + load bag</text>
+          <!-- S7 Press (heat) -->
+          <rect x="40" y="358" width="180" height="120" rx="10" fill="#f6ead6" stroke="#d4923f" stroke-width="1.5"/>
+          <circle cx="58" cy="376" r="11" fill="#b8762c"/><text x="58" y="380" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">7</text>
+          <line x1="130" y1="375" x2="130" y2="386" stroke="#6e3f17" stroke-width="2"/><polygon points="130,389 125,381 135,381" fill="#6e3f17"/>
+          <rect x="110" y="392" width="40" height="7" rx="2" fill="#6e3f17"/>
+          <rect x="110" y="405" width="40" height="7" rx="2" fill="#6e3f17"/>
+          <text x="130" y="444" text-anchor="middle" font-size="14" font-weight="700" fill="#6e3f17">Press</text>
+          <text x="130" y="462" text-anchor="middle" font-size="11" fill="#877c6b">heat + slow ramp</text>
+          <!-- S8 Collect -->
+          <rect x="280" y="358" width="180" height="120" rx="10" fill="#e4eef3" stroke="#b6d3df" stroke-width="1.5"/>
+          <circle cx="298" cy="376" r="11" fill="#3f7d99"/><text x="298" y="380" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">8</text>
+          <line x1="358" y1="410" x2="379" y2="389" stroke="#2b5d74" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="381" cy="387" r="4" fill="none" stroke="#2b5d74" stroke-width="2"/>
+          <text x="370" y="444" text-anchor="middle" font-size="14" font-weight="700" fill="#2b5d74">Collect</text>
+          <text x="370" y="462" text-anchor="middle" font-size="11" fill="#877c6b">cold dab tool</text>
+          <!-- S9 Product path -->
+          <rect x="520" y="358" width="180" height="120" rx="10" fill="#f4efe6" stroke="#e7e2d6" stroke-width="1.5"/>
+          <circle cx="538" cy="376" r="11" fill="#877c6b"/><text x="538" y="380" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">9</text>
+          <g stroke="#877c6b" stroke-width="2" fill="none"><line x1="592" y1="398" x2="606" y2="398"/><line x1="606" y1="398" x2="624" y2="386"/><line x1="606" y1="398" x2="624" y2="398"/><line x1="606" y1="398" x2="624" y2="410"/></g>
+          <g fill="#877c6b"><circle cx="627" cy="386" r="2.5"/><circle cx="627" cy="398" r="2.5"/><circle cx="627" cy="410" r="2.5"/></g>
+          <text x="610" y="444" text-anchor="middle" font-size="14" font-weight="700" fill="#4a4034">Product path</text>
+          <text x="610" y="462" text-anchor="middle" font-size="11" fill="#877c6b">choose the product</text>
+          <!-- S10 Cure (warm) -->
+          <rect x="520" y="508" width="180" height="120" rx="10" fill="#faf3e7" stroke="#e0b06b" stroke-width="1.5"/>
+          <circle cx="538" cy="526" r="11" fill="#c9a14a"/><text x="538" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">10</text>
+          <rect x="598" y="534" width="24" height="6" rx="2" fill="#b8762c"/>
+          <rect x="600" y="540" width="20" height="22" rx="4" fill="#fbf2df" stroke="#b8762c" stroke-width="1.5"/>
+          <text x="610" y="594" text-anchor="middle" font-size="14" font-weight="700" fill="#6e3f17">Cure</text>
+          <text x="610" y="612" text-anchor="middle" font-size="11" fill="#877c6b">cold / warm / staged</text>
+          <!-- S11 Store -->
+          <rect x="280" y="508" width="180" height="120" rx="10" fill="#e4eef3" stroke="#b6d3df" stroke-width="1.5"/>
+          <circle cx="298" cy="526" r="11" fill="#3f7d99"/><text x="298" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">11</text>
+          <rect x="358" y="534" width="24" height="6" rx="2" fill="#3f7d99"/>
+          <rect x="360" y="540" width="20" height="22" rx="4" fill="#e4eef3" stroke="#2b5d74" stroke-width="1.5"/>
+          <g stroke="#2b5d74" stroke-width="1.2" stroke-linecap="round"><line x1="364" y1="551" x2="376" y2="551"/><line x1="367" y1="546" x2="373" y2="556"/><line x1="367" y1="556" x2="373" y2="546"/></g>
+          <text x="370" y="594" text-anchor="middle" font-size="14" font-weight="700" fill="#2b5d74">Store</text>
+          <text x="370" y="612" text-anchor="middle" font-size="11" fill="#877c6b">sealed · cold · dark</text>
+          <!-- End: Dab / vape -->
+          <rect x="40" y="508" width="180" height="120" rx="10" fill="#c9a14a" stroke="#b8762c" stroke-width="1.5"/>
+          <circle cx="58" cy="526" r="11" fill="#6e3f17"/><text x="58" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">✓</text>
+          <rect x="124" y="534" width="12" height="26" rx="3" fill="#3a2008"/>
+          <rect x="127" y="529" width="6" height="6" rx="1" fill="#3a2008"/>
+          <text x="130" y="594" text-anchor="middle" font-size="14" font-weight="700" fill="#3a2008">Dab / vape</text>
+          <text x="130" y="612" text-anchor="middle" font-size="11" fill="#3a2008">enjoy or sell</text>
+        </svg>
+        <figcaption>Eleven stages from living plant to finished concentrate. Blue marks the cold-chain steps where heat is the enemy; amber marks the heat steps — the press and the cure. Follow the arrows.</figcaption>
+      </figure>
+
+      <p>Sections 11–14 break each stage down with its own parameters. The matrices (08, 09, 13) and failure modes (15) tell you which lever to move when a stage goes wrong.</p>
     </section>
 
     <!-- 04 ===================================================== -->
@@ -1046,7 +1159,7 @@
       </figure>
 
       <h3>10.9 · Collection <span style="font-weight:400;color:var(--frost-deep)">(cold chain)</span></h3>
-      <p>Collect immediately with a cold dab tool onto fresh parchment, then into pre-chilled glass; seal. Cold collection preserves terpenes and sets a cleaner texture. Move straight to your product path (Section 13).</p>
+      <p>Collect immediately with a cold dab tool onto fresh parchment, then into pre-chilled glass; seal. Cold collection preserves terpenes and sets a cleaner texture. Move straight to your product path (Section 14).</p>
     </section>
 
     <!-- 12 ===================================================== -->
