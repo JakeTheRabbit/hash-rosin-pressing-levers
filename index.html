@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash Rosin, Pressed — A Solventless Systems Guide</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --bg-warm: #fbf9f4;
+    --surface: #ffffff;
+    --surface-soft: #f4efe6;
+    --ink: #211a12;
+    --ink-soft: #4a4034;
+    --ink-muted: #877c6b;
+    --resin: #b8762c;
+    --resin-deep: #6e3f17;
+    --resin-bright: #d4923f;
+    --resin-mist: #f6ead6;
+    --resin-fog: #faf3e7;
+    --gold: #c9a14a;
+    --rust: #9c4a3a;
+    --rust-soft: #f5e3df;
+    --amber-soft: #f5ead5;
+    --frost: #3f7d99;
+    --frost-deep: #2b5d74;
+    --frost-soft: #e4eef3;
+    --line: #e7e2d6;
+    --line-soft: #f0ece2;
+    --shadow: 0 1px 2px rgba(110,63,23,.05), 0 4px 12px rgba(110,63,23,.07);
+    --shadow-lg: 0 4px 24px rgba(110,63,23,.09), 0 12px 48px rgba(110,63,23,.07);
+    --radius: 6px;
+    --radius-lg: 12px;
+    --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background:
+      radial-gradient(ellipse at top right, rgba(212,146,63,.18), transparent 60%),
+      radial-gradient(ellipse at bottom left, rgba(184,118,44,.12), transparent 50%),
+      linear-gradient(180deg, #3a2008 0%, #5c3413 100%);
+    color: #f7f5f0;
+    padding: 5rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255,235,200,.05) 1px, transparent 1px),
+      radial-gradient(circle at 70% 60%, rgba(255,235,200,.03) 1px, transparent 1px);
+    background-size: 80px 80px, 120px 120px;
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 980px; margin: 0 auto; position: relative; }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: .8rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: .95;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height: 1.05;
+    font-weight: 500;
+    margin: 0 0 1.5rem;
+    letter-spacing: -.015em;
+  }
+  .hero h1 em { font-style: italic; color: #f0cd98; }
+  .hero-lede {
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.55;
+    color: rgba(247,245,240,.88);
+    max-width: 730px;
+    margin: 0;
+    font-weight: 400;
+  }
+  .hero-meta {
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-family: var(--mono);
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(247,245,240,.6);
+  }
+  .hero-meta span::before { content: '◆'; color: var(--gold); margin-right: .6rem; opacity: .75; }
+
+  /* ---------- LAYOUT ---------- */
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 4rem;
+  }
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; gap: 0; padding: 0 1.25rem; }
+    .toc { position: static !important; margin: 2rem 0; max-height: none !important; border-right: 0 !important; }
+  }
+
+  /* ---------- TOC ---------- */
+  .toc {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    padding: 2rem 1.5rem 2rem 0;
+    border-right: 1px solid var(--line);
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+  .toc-title {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 1rem;
+    font-weight: 600;
+  }
+  .toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+  .toc li { counter-increment: toc; margin: .35rem 0; }
+  .toc a {
+    display: block;
+    padding: .35rem 0 .35rem 1.85rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: .87rem;
+    line-height: 1.35;
+    border-left: 2px solid transparent;
+    transition: all .15s ease;
+    position: relative;
+  }
+  .toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: .35rem;
+    font-family: var(--mono);
+    font-size: .7rem;
+    color: var(--resin-bright);
+    opacity: .7;
+  }
+  .toc a:hover { color: var(--resin-deep); border-left-color: var(--resin-bright); background: var(--resin-fog); }
+
+  /* ---------- MAIN ---------- */
+  main { padding: 3rem 0 6rem; min-width: 0; }
+  section { margin-bottom: 4.5rem; scroll-margin-top: 2rem; }
+  section:last-child { margin-bottom: 0; }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 1.5rem;
+    color: var(--resin-deep);
+    letter-spacing: -.01em;
+    position: relative;
+    padding-bottom: .8rem;
+  }
+  h2::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--resin-bright), transparent);
+    border-radius: 2px;
+  }
+  h2 .h2-num { font-family: var(--mono); font-size: .65em; color: var(--gold); margin-right: .8rem; font-weight: 500; vertical-align: .15em; }
+
+  h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; color: var(--resin-deep); margin: 2.5rem 0 1rem; letter-spacing: -.005em; }
+  h4 {
+    font-family: var(--sans);
+    font-weight: 700;
+    margin: 1.5rem 0 .6rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-size: .85rem;
+    color: var(--resin);
+  }
+
+  p { margin: 0 0 1.1rem; color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--resin-deep); }
+
+  ul, ol { margin: 0 0 1.2rem; padding-left: 1.5rem; color: var(--ink-soft); }
+  li { margin: .3rem 0; }
+  ul li::marker { color: var(--resin-bright); }
+  ol li::marker { color: var(--resin); font-weight: 600; }
+
+  a { color: var(--resin); text-decoration: underline; text-decoration-color: rgba(184,118,44,.3); text-underline-offset: 2px; }
+  a:hover { text-decoration-color: var(--resin); }
+
+  /* ---------- BLOCKQUOTE / CALLOUT ---------- */
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--resin-mist);
+    border-left: 4px solid var(--resin-bright);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    line-height: 1.55;
+    color: var(--resin-deep);
+    font-style: italic;
+  }
+  blockquote strong { color: var(--resin-deep); font-weight: 600; }
+  blockquote p { margin: 0; color: inherit; }
+  blockquote p + p { margin-top: .8rem; }
+
+  /* ---------- TABLES ---------- */
+  .table-wrap { margin: 1.5rem 0 2rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); overflow: hidden; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { border-collapse: collapse; width: 100%; font-size: .87rem; line-height: 1.45; }
+  thead { background: linear-gradient(180deg, var(--resin-deep), #8a4f1d); color: #fbf9f4; }
+  th {
+    padding: .85rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: .78rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    border-right: 1px solid rgba(255,255,255,.08);
+    vertical-align: bottom;
+  }
+  th:last-child { border-right: 0; }
+  td { padding: .75rem 1rem; border-bottom: 1px solid var(--line-soft); border-right: 1px solid var(--line-soft); vertical-align: top; color: var(--ink-soft); }
+  td:last-child { border-right: 0; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: var(--bg-warm); }
+  tbody tr:hover { background: var(--resin-fog); }
+  td strong { color: var(--ink); }
+
+  /* Direction symbols */
+  .up { color: #2d7a4a; font-weight: 700; }
+  .down { color: #b8552c; font-weight: 700; }
+  .neutral { color: var(--ink-muted); font-weight: 600; }
+  .warn { color: var(--rust); font-weight: 700; }
+  .cold { color: var(--frost-deep); font-weight: 700; }
+
+  /* Compact matrix */
+  table.matrix { font-size: .82rem; }
+  table.matrix th { padding: .7rem .65rem; font-size: .72rem; }
+  table.matrix td { padding: .6rem .65rem; font-size: .82rem; }
+  table.matrix th:first-child,
+  table.matrix td:first-child {
+    background: var(--surface-soft);
+    font-weight: 600;
+    color: var(--ink);
+    position: sticky;
+    left: 0;
+    border-right: 2px solid var(--line);
+  }
+  table.matrix tbody tr:nth-child(even) td:first-child { background: #ece5d6; }
+  table.matrix tbody tr:hover td:first-child { background: var(--resin-mist); }
+
+  th .unit { display: block; font-weight: 400; font-size: .8em; opacity: .65; text-transform: none; letter-spacing: 0; margin-top: .2rem; }
+  td .sub { display: block; color: var(--ink-muted); font-size: .82em; margin-top: .1rem; }
+
+  /* ---------- LEGEND ---------- */
+  .legend { display: flex; flex-wrap: wrap; gap: 1.25rem; padding: 1rem 1.25rem; background: var(--surface-soft); border-radius: var(--radius); margin: 1rem 0 1.5rem; font-size: .85rem; border: 1px solid var(--line); }
+  .legend-item { display: inline-flex; align-items: center; gap: .5rem; color: var(--ink-soft); }
+  .legend-symbol { font-family: var(--mono); font-weight: 700; font-size: 1rem; width: 1.5rem; text-align: center; }
+
+  /* ---------- BOXES ---------- */
+  .box { margin: 1.5rem 0; padding: 1.5rem 1.75rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+  .box.warn { background: var(--amber-soft); border-color: #e8c98e; }
+  .box.danger { background: var(--rust-soft); border-color: #d9a89e; }
+  .box.cold { background: var(--frost-soft); border-color: #b6d3df; }
+  .box-title { font-family: var(--mono); font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--resin); margin: 0 0 .6rem; font-weight: 700; }
+  .box.warn .box-title { color: var(--amber, #b8762c); }
+  .box.danger .box-title { color: var(--rust); }
+  .box.cold .box-title { color: var(--frost-deep); }
+  .box p:last-child { margin-bottom: 0; }
+
+  /* ---------- BALANCES GRID ---------- */
+  .balances { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2rem; }
+  .balance-card { padding: 1.5rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
+  .balance-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .balance-num { font-family: var(--mono); font-size: .7rem; letter-spacing: .2em; color: var(--gold); font-weight: 600; }
+  .balance-card h4 { font-family: var(--serif); font-size: 1.25rem; color: var(--resin-deep); margin: .3rem 0 .8rem; text-transform: none; letter-spacing: -.01em; font-weight: 600; }
+  .balance-card p { font-size: .9rem; margin: .4rem 0; }
+  .balance-card .label { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--resin); font-weight: 600; }
+  .balance-card .label.cold { color: var(--frost-deep); }
+
+  /* ---------- FAILURE MODES ---------- */
+  .failure { margin: 1.5rem 0; padding: 1.5rem 1.75rem; background: var(--surface); border-left: 4px solid var(--rust); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; box-shadow: var(--shadow); }
+  .failure h4 { color: var(--rust); text-transform: none; letter-spacing: -.005em; font-size: 1.1rem; margin: 0 0 .8rem; font-family: var(--serif); font-weight: 600; }
+  .failure-num { font-family: var(--mono); font-size: .7rem; color: var(--rust); letter-spacing: .15em; font-weight: 700; margin-right: .5rem; }
+  .failure p { margin: .4rem 0; font-size: .92rem; }
+
+  /* ---------- STEP FLOW ---------- */
+  .flow { display: flex; flex-wrap: wrap; gap: .5rem; align-items: stretch; margin: 1.5rem 0 2rem; }
+  .flow-step {
+    flex: 1 1 130px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: .85rem .9rem;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .flow-step .n { font-family: var(--mono); font-size: .65rem; color: var(--gold); letter-spacing: .15em; font-weight: 700; }
+  .flow-step .t { display: block; font-weight: 600; color: var(--ink); font-size: .9rem; margin-top: .15rem; line-height: 1.25; }
+  .flow-step .d { display: block; color: var(--ink-muted); font-size: .76rem; margin-top: .25rem; line-height: 1.3; }
+  .flow-step.coldstep { border-color: #b6d3df; background: var(--frost-soft); }
+  .flow-step.coldstep .n { color: var(--frost-deep); }
+
+  /* ---------- MENTAL MODEL CHAIN ---------- */
+  .chain { margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, var(--resin-deep), #a05c20); color: #f7f5f0; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+  .chain-label { font-family: var(--mono); font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; }
+  .chain-text { font-family: var(--serif); font-size: 1.15rem; line-height: 1.6; margin: 0; font-weight: 400; }
+  .chain-text strong { color: #f0cd98; font-weight: 600; }
+
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--resin-deep); color: rgba(247,245,240,.72); padding: 3rem 2rem; text-align: center; margin-top: 4rem; font-size: .9rem; }
+  footer a { color: var(--gold); }
+  .citations { max-width: 820px; margin: 0 auto; text-align: left; font-size: .82rem; line-height: 1.55; }
+  .citations h4 { color: var(--gold); text-align: center; margin-bottom: 1rem; }
+  .citations ol { color: rgba(247,245,240,.78); }
+  .citations a { word-break: break-all; }
+  .footer-note { max-width: 820px; margin: 1.5rem auto 0; font-size: .8rem; color: rgba(247,245,240,.55); }
+
+  /* ---------- PRINT ---------- */
+  @media print {
+    body { background: white; }
+    .hero { background: white; color: black; padding: 1rem 0; }
+    .hero h1 { color: var(--resin-deep); }
+    .hero h1 em { color: var(--resin); }
+    .hero-lede, .hero-meta { color: var(--ink-soft); }
+    .toc { display: none; }
+    .container { display: block; padding: 0 1rem; }
+    main { padding: 1rem 0; }
+    section { page-break-inside: avoid; margin-bottom: 2rem; }
+    .table-wrap, .balance-card, .box, .failure, .flow-step { box-shadow: none; }
+    thead { background: #f0f0f0 !important; color: black !important; }
+    th { color: black !important; }
+    .chain { background: #f0f0f0; color: black; }
+    .chain-label, .chain-text strong { color: var(--resin-deep); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">A Practitioner's Field Guide</div>
+    <h1>Hash Rosin, Pressed<br><em>as a coupled system</em></h1>
+    <p class="hero-lede">Rosin is mechanical, not chemical: heat, pressure, time and a micron screen acting on a material whose quality ceiling was already fixed upstream — at harvest, in the wash, in the dry. Every colour, texture and yield number below is a consequence of where you set those four levers, and what you fed them. This guide maps the whole chain, trichome to dab.</p>
+    <div class="hero-meta">
+      <span>Farm to dab</span>
+      <span>Four input materials</span>
+      <span>Metric · °C · PSI</span>
+      <span>Zero solvent</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ========== TOC ========== -->
+  <nav class="toc">
+    <p class="toc-title">Contents</p>
+    <ol>
+      <li><a href="#core">Core Answer</a></li>
+      <li><a href="#pipeline">The Pipeline at a Glance</a></li>
+      <li><a href="#setpoints">Starting Setpoints by Material</a></li>
+      <li><a href="#known">Known / Assumed / Unknown</a></li>
+      <li><a href="#balances">The Press as Four Balances</a></li>
+      <li><a href="#levers">Lever Inventory</a></li>
+      <li><a href="#interaction">Main Lever Interaction Matrix</a></li>
+      <li><a href="#symptom">Symptom-to-Parameter Matrix</a></li>
+      <li><a href="#worked">Worked Example: +6 °C</a></li>
+      <li><a href="#stages">Stage Deep-Dives</a></li>
+      <li><a href="#equipment">Equipment-Specific Effects</a></li>
+      <li><a href="#trichome">Input / Trichome Matrix</a></li>
+      <li><a href="#products">Post-Press Product Paths</a></li>
+      <li><a href="#failures">Main Failure Modes</a></li>
+      <li><a href="#hierarchy">Practical Control Hierarchy</a></li>
+      <li><a href="#troubleshoot">Troubleshooting Matrix</a></li>
+      <li><a href="#model">The Simplest Mental Model</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <!-- 01 ===================================================== -->
+    <section id="core">
+      <h2><span class="h2-num">01</span>Core Answer</h2>
+      <p>A rosin press has only four levers — <strong>heat, pressure, time and screen (micron)</strong> — and they all negotiate a single tension: <em>yield versus quality</em> (terpene retention, colour, clarity). Heat lowers resin viscosity so it flows; the micron bag decides what flows <em>with</em> it (pure trichome oil, or fats and plant matter too); pressure and time only push the reaction along. None of them can lift the ceiling set upstream.</p>
+      <blockquote><strong>Quality in, quality out.</strong> You cannot press 6-star rosin from 3-star input. The wash, the dry and the grade fix the maximum; the press and the cure only preserve or squander it. Hash presses <em>cooler</em> than flower, and clean full-melt hash blows out if you rush the pressure.</blockquote>
+      <p>So the whole craft reduces to: fix the input, pick the product, choose a micron that matches the trichome heads, set the lowest temperature that still flows, ramp pressure only to finish the flow, collect cold, and cure for texture.</p>
+    </section>
+
+    <!-- 02 ===================================================== -->
+    <section id="pipeline">
+      <h2><span class="h2-num">02</span>The Pipeline at a Glance</h2>
+      <p>Hash rosin is the back half of a longer chain. Cold-chain steps (where heat is the enemy) are marked in blue; the press and cure are where heat becomes a tool.</p>
+      <div class="flow">
+        <div class="flow-step coldstep"><span class="n">01</span><span class="t">Harvest</span><span class="d">80–90% cloudy trichomes, lights-off</span></div>
+        <div class="flow-step coldstep"><span class="n">02</span><span class="t">Freeze or Dry</span><span class="d">fresh-freeze for live; slow dry for sift</span></div>
+        <div class="flow-step coldstep"><span class="n">03</span><span class="t">Wash / Sift</span><span class="d">ice-water hash or dry-sift screens</span></div>
+        <div class="flow-step coldstep"><span class="n">04</span><span class="t">Dry the Hash</span><span class="d">freeze-dry or cold air-dry</span></div>
+        <div class="flow-step"><span class="n">05</span><span class="t">Grade</span><span class="d">melt test → 1–6 star</span></div>
+        <div class="flow-step"><span class="n">06</span><span class="t">Condition</span><span class="d">moisture + pre-chill, pre-press if needed</span></div>
+        <div class="flow-step"><span class="n">07</span><span class="t">Press</span><span class="d">preheat → slow ramp → hold to flow-stop</span></div>
+        <div class="flow-step coldstep"><span class="n">08</span><span class="t">Collect</span><span class="d">cold tool, fresh parchment</span></div>
+        <div class="flow-step"><span class="n">09</span><span class="t">Product Path</span><span class="d">badder · sauce · diamonds · cart</span></div>
+        <div class="flow-step"><span class="n">10</span><span class="t">Cure</span><span class="d">cold-cure, warm-cure or decarb</span></div>
+        <div class="flow-step coldstep"><span class="n">11</span><span class="t">Store</span><span class="d">sealed glass, cold, dark</span></div>
+      </div>
+      <p>Sections 10–13 break each stage down with its own parameters. The matrices (07, 08, 12) and failure modes (14) tell you which lever to move when a stage goes wrong.</p>
+    </section>
+
+    <!-- 03 ===================================================== -->
+    <section id="setpoints">
+      <h2><span class="h2-num">03</span>Starting Setpoints by Input Material</h2>
+      <p>Where to begin for each of the four input materials. These are <em>starting points</em> to dial in from — not targets to chase. Temperatures are platen temperature; press <em>to flow</em>, not to the clock. Hash sits cooler than flower because its trichome heads are already isolated and need only enough heat to melt resin.</p>
+      <div class="table-wrap"><div class="table-scroll">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Input material</th>
+            <th>Bag micron<span class="unit">inner filter</span></th>
+            <th>Plate temp<span class="unit">recommended</span></th>
+            <th>Temp band<span class="unit">°C</span></th>
+            <th>Dwell<span class="unit">seconds</span></th>
+            <th>Pressure approach</th>
+            <th>Pre-press</th>
+            <th>Typical products</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dried flower</td>
+            <td>90 µm<span class="sub">75–115 µm</span></td>
+            <td>88 °C</td>
+            <td>82–93</td>
+            <td>90–180</td>
+            <td>Low–medium; slow 30–60 s ramp as resin flows, then ease to firm contact</td>
+            <td>Yes</td>
+            <td>Badder, fresh press; carts at 75 µm</td>
+          </tr>
+          <tr>
+            <td>Dry sift / kief</td>
+            <td>72 µm<span class="sub">36–120 by grade</span></td>
+            <td>82 °C</td>
+            <td>71–88</td>
+            <td>60–90</td>
+            <td>Low; add <em>time</em>, not pressure — finer material already has good contact</td>
+            <td>Yes</td>
+            <td>Badder, diamonds</td>
+          </tr>
+          <tr>
+            <td>Fresh-frozen hash (5–6★)</td>
+            <td>36 µm<span class="sub">25–45 µm</span></td>
+            <td>71 °C</td>
+            <td>60–77</td>
+            <td>60–180</td>
+            <td>Very low; add heat only if flow stalls. <strong>More pressure is NOT better</strong> — it pushes fats through</td>
+            <td>No</td>
+            <td>Live rosin, cold-cure badder, live diamonds, carts, hash holes</td>
+          </tr>
+          <tr>
+            <td>Dried / cured bubble hash</td>
+            <td>45 µm<span class="sub">25–90 by grade</span></td>
+            <td>77 °C</td>
+            <td>71–82</td>
+            <td>60–120</td>
+            <td>Low; a few °C hotter than full-melt to coax flow, but stay gentle</td>
+            <td>No</td>
+            <td>Badder, diamonds, carts</td>
+          </tr>
+        </tbody>
+      </table>
+      </div></div>
+      <div class="box"><p class="box-title">Temperature bands at a glance</p>
+        <p><strong>Cold-cure hold (post-press, not platen):</strong> 10–21 °C for days to ~2 weeks — sets creamy badder while keeping volatile terpenes. <br>
+        <strong>Low-temp press (flavour):</strong> 60–85 °C — max terpene retention, lightest colour; hash ~60–77 °C, premium flower ~82–88 °C. <br>
+        <strong>Balanced sweet spot (flower):</strong> 88–99 °C — strong yield, minimal terpene loss; good default for unknown <em>flower</em>. <br>
+        <strong>High-temp press (yield / sauce / carts):</strong> 99–104 °C — max yield, fastest flow, darker; use to rescue degraded material.</p>
+      </div>
+    </section>
+
+    <!-- 04 ===================================================== -->
+    <section id="known">
+      <h2><span class="h2-num">04</span>Known / Assumed / Unknown</h2>
+      <h3>Knowns (settled)</h3>
+      <ul>
+        <li>Lower platen temperature preserves terpenes and colour; higher temperature buys yield and flow at their expense.</li>
+        <li>A tighter (smaller-micron) bag yields <em>cleaner, lighter</em> rosin at <em>lower</em> yield; a coarser bag does the reverse.</li>
+        <li>Hash and dry sift press cooler than flower — their heads are already separated from plant matter.</li>
+        <li>Sealed heat preserves terpenes (internal CO₂ pressure raises their boiling points); open-air heat oxidises and strips them.</li>
+        <li>Only <strong>THCa</strong> crystallises into diamonds; once decarbed to THC it stays liquid. Carts need full decarb, diamonds need preserved THCa.</li>
+      </ul>
+      <h3>Assumptions this guide makes</h3>
+      <ul>
+        <li>Your hash is well-made and <em>properly dried</em> (freeze-dried or correctly cold-dried) before it reaches the plates.</li>
+        <li>Your press holds temperature accurately (PID or app-controlled) and applies even heat across both plates.</li>
+        <li>You work clean and cold, and you log runs so you can move one lever at a time.</li>
+      </ul>
+      <h3>Unknowns that change the exact numbers</h3>
+      <ul>
+        <li><strong>Trichome head size &amp; distribution</strong> — cultivar-dependent; dictates the micron more than anything else.</li>
+        <li><strong>Lipid / wax load</strong> — varies by genetics and material type; flower carries more than hash.</li>
+        <li><strong>Crystallisation tendency</strong> — terpene-to-THCa ratio decides how readily (or stubbornly) diamonds form.</li>
+        <li><strong>Exact moisture</strong> — a few points of RH swing flow, clarity and blowout risk.</li>
+      </ul>
+    </section>
+
+    <!-- 05 ===================================================== -->
+    <section id="balances">
+      <h2><span class="h2-num">05</span>The Press as Four Coupled Balances</h2>
+      <p>Like a grow room, a press is best read as a few coupled balances rather than independent knobs. Move one and the others shift.</p>
+      <div class="balances">
+        <div class="balance-card">
+          <span class="balance-num">B-01</span>
+          <h4>Heat</h4>
+          <p>Platen heat versus the thermal mass of the bag. Enough heat melts resin and drops its viscosity so it flows; too much volatilises terpenes and darkens colour.</p>
+          <p class="label">Flow ↔ Flavour</p>
+        </div>
+        <div class="balance-card">
+          <span class="balance-num">B-02</span>
+          <h4>Pressure &amp; Flow</h4>
+          <p>Applied force versus the bag's resistance and the resin's flow rate. Force should follow the oil, not lead it — excess force ruptures the bag and drives contaminants through the screen.</p>
+          <p class="label">Drive ↔ Blowout</p>
+        </div>
+        <div class="balance-card">
+          <span class="balance-num">B-03</span>
+          <h4>Moisture</h4>
+          <p>Water in the input versus flow and stability. A little aids flow; too much causes emulsion, haze and instability, and raises blowout risk. Properly dried hash is the baseline.</p>
+          <p class="label cold">Flow ↔ Haze</p>
+        </div>
+        <div class="balance-card">
+          <span class="balance-num">B-04</span>
+          <h4>Purity (Screen)</h4>
+          <p>Screen selectivity: oil passing through versus contaminants held back. The micron is the gate — tighter holds more back (cleaner, less yield), coarser lets more through (more yield, more colour).</p>
+          <p class="label">Yield ↔ Clarity</p>
+        </div>
+      </div>
+      <blockquote>The master tension that links all four: <strong>Yield ↔ Quality.</strong> Almost every adjustment trades one for the other. Decide which you're optimising <em>before</em> you touch a lever.</blockquote>
+    </section>
+
+    <!-- 06 ===================================================== -->
+    <section id="levers">
+      <h2><span class="h2-num">06</span>Lever Inventory</h2>
+      <p>The full set of controls, grouped by where they sit in the chain. Upstream levers cap the ceiling; press levers set the trade; finishing levers set the texture.</p>
+
+      <h3>Upstream / material levers</h3>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Lever</th><th>What it controls</th><th>Direction of effect</th></tr></thead>
+        <tbody>
+          <tr><td>Trichome maturity</td><td>Potency &amp; terpene profile at harvest</td><td>Cloudy = peak; clear = immature/low yield; amber = degrading to CBN</td></tr>
+          <tr><td>Fresh-frozen vs cured</td><td>"Live" terpene profile vs stability</td><td>Fresh-frozen = highest monoterpenes, presses coolest; cured = a touch warmer to flow</td></tr>
+          <tr><td>Wash / sift quality &amp; melt grade</td><td>Head purity (the star rating)</td><td>Higher grade → cleaner melt, higher yield, can press cooler &amp; tighter</td></tr>
+          <tr><td>Micron fraction collected</td><td>Which head sizes you kept (73–120 µm = gold)</td><td>Full-melt fractions press cleanest; off-fractions add colour/contaminant</td></tr>
+          <tr><td>Moisture / RH</td><td>Water content of the input</td><td>Too dry = poor flow/yield; too wet = haze, emulsion, blowout</td></tr>
+          <tr><td>Cultivar</td><td>Head size, lipid load, crystallisation tendency</td><td>Sets micron, blowout risk and how readily diamonds form</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+
+      <h3>Press levers</h3>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Lever</th><th>What it controls</th><th>Direction of effect</th></tr></thead>
+        <tbody>
+          <tr><td>Plate temperature</td><td>Resin viscosity / flow</td><td><span class="up">↑</span> yield, flow; <span class="down">↓</span> terpenes, lightness</td></tr>
+          <tr><td>Applied force / effective PSI</td><td>Drive through the screen</td><td><span class="up">↑</span> yield to a point, then <span class="warn">↑</span> blowout &amp; contaminant pass-through</td></tr>
+          <tr><td>Dwell time</td><td>How long under heat + force</td><td><span class="up">↑</span> yield; <span class="down">↓</span> terpenes with prolonged heat</td></tr>
+          <tr><td>Ramp profile</td><td>How fast you reach target force</td><td>Slow ramp = fewer blowouts, cleaner flow; fast ramp = rupture risk</td></tr>
+          <tr><td>Micron bag</td><td>Screen selectivity (the gate)</td><td>Tighter <span class="up">↑</span> purity, <span class="down">↓</span> yield; coarser the reverse</td></tr>
+          <tr><td>Fill / loading density</td><td>Flow path &amp; pressure distribution</td><td>Even, air-free fill → even flow, fewer channels &amp; blowouts</td></tr>
+          <tr><td>Pre-press</td><td>Forms a dense, air-free puck</td><td>Reduces channeling &amp; blowouts (flower/sift); skip for full-melt hash</td></tr>
+          <tr><td>Plate size vs load</td><td>Heat coverage &amp; throughput</td><td>Match to batch — overfilling cold edges chokes flow</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+
+      <h3>Finishing levers</h3>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Lever</th><th>What it controls</th><th>Direction of effect</th></tr></thead>
+        <tbody>
+          <tr><td>Collection temperature</td><td>Texture lock at the parchment</td><td>Cold collection preserves terpenes &amp; sets cleaner textures</td></tr>
+          <tr><td>Cure type / temp / time</td><td>Final consistency</td><td>Cold cure → badder; warm cure → sauce; staged → diamonds</td></tr>
+          <tr><td>Agitation / whip</td><td>Homogenisation &amp; nucleation</td><td>Whipping drives budder; over-whip warms &amp; dulls terps</td></tr>
+          <tr><td>Nucleation trigger</td><td>Whether/when it crystallises</td><td>Cold cure or gentle heat+stir starts nucleation</td></tr>
+          <tr><td>Decarb</td><td>THCa → THC for carts</td><td>Required for carts; destroys diamond potential</td></tr>
+          <tr><td>Storage</td><td>Shelf preservation</td><td>Cold, dark, airtight = terpene &amp; cannabinoid retention</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+    </section>
+
+    <!-- 07 ===================================================== -->
+    <section id="interaction">
+      <h2><span class="h2-num">07</span>Main Lever Interaction Matrix</h2>
+      <p>What happens to each outcome when you turn a press lever <em>up</em> (or, for micron, <em>tighter</em>). Direction of effect, all else held equal.</p>
+      <div class="legend">
+        <span class="legend-item"><span class="legend-symbol up">↑</span> increases / improves</span>
+        <span class="legend-item"><span class="legend-symbol down">↓</span> decreases / darkens</span>
+        <span class="legend-item"><span class="legend-symbol neutral">→</span> little change</span>
+        <span class="legend-item"><span class="legend-symbol warn">⚠</span> raises risk</span>
+      </div>
+      <div class="table-wrap"><div class="table-scroll">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Lever moved →</th>
+            <th>Yield</th>
+            <th>Terpene retention</th>
+            <th>Colour (lighter)</th>
+            <th>Clarity</th>
+            <th>Blowout risk</th>
+            <th>Texture shift</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>↑ Plate temp</td>
+            <td><span class="up">↑</span></td>
+            <td><span class="down">↓</span></td>
+            <td><span class="down">↓</span></td>
+            <td><span class="up">↑</span><span class="sub">thinner oil runs cleaner</span></td>
+            <td><span class="down">↓</span></td>
+            <td>toward sap / shatter</td>
+          </tr>
+          <tr>
+            <td>↑ Pressure / force</td>
+            <td><span class="up">↑</span><span class="sub">to a point</span></td>
+            <td><span class="neutral">→</span></td>
+            <td><span class="down">↓</span><span class="sub">if forced</span></td>
+            <td><span class="down">↓</span><span class="sub">pushes fats &amp; fines</span></td>
+            <td><span class="warn">⚠ ↑↑</span></td>
+            <td>wetter / contaminated</td>
+          </tr>
+          <tr>
+            <td>↑ Dwell time</td>
+            <td><span class="up">↑</span></td>
+            <td><span class="down">↓</span></td>
+            <td><span class="down">↓</span></td>
+            <td><span class="neutral">→</span></td>
+            <td><span class="neutral">→</span></td>
+            <td>more decarb / sappier</td>
+          </tr>
+          <tr>
+            <td>↓ Micron (tighter bag)</td>
+            <td><span class="down">↓</span></td>
+            <td><span class="neutral">→</span></td>
+            <td><span class="up">↑</span></td>
+            <td><span class="up">↑↑</span></td>
+            <td><span class="warn">⚠ ↑</span><span class="sub">more restriction</span></td>
+            <td>cleaner, stiffer</td>
+          </tr>
+          <tr>
+            <td>↑ Moisture (wetter input)</td>
+            <td><span class="up">↑</span><span class="sub">then ↓</span></td>
+            <td><span class="neutral">→</span></td>
+            <td><span class="neutral">→</span></td>
+            <td><span class="down">↓↓</span><span class="sub">haze / emulsion</span></td>
+            <td><span class="warn">⚠ ↑</span></td>
+            <td>unstable / greasy</td>
+          </tr>
+          <tr>
+            <td>↑ Pre-press density</td>
+            <td><span class="up">↑</span></td>
+            <td><span class="neutral">→</span></td>
+            <td><span class="neutral">→</span></td>
+            <td><span class="up">↑</span></td>
+            <td><span class="up">↓↓ safer</span></td>
+            <td>even flow</td>
+          </tr>
+        </tbody>
+      </table>
+      </div></div>
+      <p>The pattern to internalise: <strong>temperature and micron are your quality levers; pressure and time are your finishing levers.</strong> Reach for heat and screen first; use force only to complete a flow that heat has already started.</p>
+    </section>
+
+    <!-- 08 ===================================================== -->
+    <section id="symptom">
+      <h2><span class="h2-num">08</span>Symptom-to-Parameter Matrix</h2>
+      <p>Read a result, find the lever that moved too far, make the one corrective change. Adjust a single lever per run so the next result is interpretable.</p>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>You observe</th><th>Lever that moved too far</th><th>Corrective change</th></tr></thead>
+        <tbody>
+          <tr><td>Low yield, oil won't flow / reabsorbs</td><td>Temp too low · material too dry · pressure too low · screen too tight</td><td>+3–6 °C; check moisture; firmer, slower ramp; open micron one step</td></tr>
+          <tr><td>Dark or green rosin</td><td>Too hot · over-pressed · contaminated input</td><td>Drop temp; gentler ramp; tighten micron; start from cleaner grade</td></tr>
+          <tr><td>Hazy, cloudy or "wet" rosin</td><td>Excess moisture / lipids</td><td>Dry &amp; condition input; cooler press; tighter bag</td></tr>
+          <tr><td>Flat, weak nose</td><td>Temp too high · dwell too long · hot collection</td><td>Cold-press band; shorten dwell; collect cold; seal immediately</td></tr>
+          <tr><td>Bag blowout</td><td>Pressure too fast · overfilled · micron too coarse for heads · no support sleeve</td><td>Slow 15–20 s ramp; 220 µm outer sleeve; smaller load; match micron to head size</td></tr>
+          <tr><td>Stays sappy, won't butter</td><td>Not nucleated</td><td>Cold-cure sealed jar 13–16 °C, 24–72 h</td></tr>
+          <tr><td>Auto-budders fast / greasy</td><td>Residual moisture in input</td><td>Dry hash more thoroughly before pressing</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+    </section>
+
+    <!-- 09 ===================================================== -->
+    <section id="worked">
+      <h2><span class="h2-num">09</span>Worked Example: Raising Plate Temp +6 °C</h2>
+      <p>A single nudge cascades. Take full-melt fresh-frozen hash and raise the platen from <strong>71 °C → 77 °C</strong>, holding everything else constant.</p>
+      <h3>Lever pulled</h3>
+      <p>Plate temperature +6 °C, still inside the hash band (60–77 °C), 36 µm bag, gentle ramp.</p>
+      <h3>Immediate effects</h3>
+      <ul>
+        <li>Resin viscosity drops — the seam wets sooner and oil runs faster.</li>
+        <li>Yield rises; less oil is left trapped in the puck.</li>
+        <li>Blowout risk falls slightly — thinner oil escapes before pressure has to build.</li>
+      </ul>
+      <h3>Secondary effects</h3>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Knock-on</th><th>Direction</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Terpene retention</td><td><span class="down">↓</span></td><td>Volatile monoterpenes (α-pinene, myrcene) start leaving as temperature climbs</td></tr>
+          <tr><td>Colour</td><td><span class="down">↓ darker</span></td><td>More thermal exposure deepens amber</td></tr>
+          <tr><td>Texture</td><td>budder → sap</td><td>Hotter rosin sets saucier; slower to butter</td></tr>
+          <tr><td>Cure behaviour</td><td>slower nucleation</td><td>Higher temp keeps more in solution; cold cure takes longer</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+      <h3>Practical interpretation</h3>
+      <div class="box warn"><p class="box-title">When to take the +6 °C</p><p>Rescuing lower-grade or cured hash that won't give up its oil; pushing for sauce, diamonds or cart feedstock where a little terpene trade is acceptable for flow and yield.</p></div>
+      <div class="box cold"><p class="box-title">When not to</p><p>Pressing 5–6★ fresh-frozen for a terpene-forward live badder. Here those six degrees trade your nose for a few points of yield — a bad deal. Stay at 71 °C and accept the lower number.</p></div>
+    </section>
+
+    <!-- 10 ===================================================== -->
+    <section id="stages">
+      <h2><span class="h2-num">10</span>Stage Deep-Dives</h2>
+      <p>The full farm-to-dab chain, stage by stage, with the parameters that matter at each. Everything before the press is a cold-chain step where heat is the enemy.</p>
+
+      <h3>10.1 · Harvest &amp; trichome maturity</h3>
+      <p>Everything downstream is capped here. Target <strong>80–90% milky/cloudy</strong> capitate-stalked trichomes with <strong>10–20% amber</strong> and zero clear. Harvest at lights-off (terpenes peak in the dark; UV degrades trichomes). For dry sift, lean slightly earlier — overripe stalks turn brittle and fragment into contamination.</p>
+
+      <h3>10.2 · Fresh-freeze vs dry/cure</h3>
+      <ul>
+        <li><strong>Fresh-frozen (for live / ice-water hash):</strong> flash-freeze whole, undried material immediately after cut. Locks in the living monoterpene profile; this is what presses coolest and cleanest.</li>
+        <li><strong>Slow dry (for dry sift):</strong> whole-plant hang at <strong>15–18 °C, 55–60% RH</strong>, complete darkness, gentle airflow, <strong>10–14 days</strong>. Target stems that snap (not bend), water activity <strong>0.55–0.62 a<sub>w</sub></strong>. Then freeze the trimmed material 4–6 h (ideally 24 h) so stalks snap cleanly.</li>
+      </ul>
+
+      <h3>10.3 · Ice-water wash <span style="font-weight:400;color:var(--frost-deep)">(cold chain)</span></h3>
+      <p>For bubble hash, agitate fresh-frozen material in near-freezing water so trichome heads break free and sink through a micron bag stack.</p>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Parameter</th><th>Target</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Water temperature</td><td>≤ 4 °C</td><td>Add ice; RO/distilled water keeps it clean. Cold keeps heads intact &amp; brittle</td></tr>
+          <tr><td>Work bag</td><td>220 µm</td><td>Holds plant material; heads pass through into the stack below</td></tr>
+          <tr><td>Collection stack</td><td>160 · 120 · 90 · 73 · 45 · 25 µm</td><td>Full-melt grades live in <strong>73–159 µm</strong>; 45–90 µm is prime; &lt;45 &amp; &gt;160 are lower grade</td></tr>
+          <tr><td>Agitation</td><td>Gentle, 1–5 min/wash</td><td>Hand-stir or low-speed machine; gentler = cleaner heads (Bubbleman's rule)</td></tr>
+          <tr><td>Cycles</td><td>2–4 washes</td><td>First wash is gentlest &amp; highest quality; later washes give more, dirtier yield</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+
+      <h3>10.4 · Dry-sift alternative <span style="font-weight:400;color:var(--frost-deep)">(cold chain)</span></h3>
+      <p>No water — work frozen material across a descending screen cascade in a cold room (below 10 °C), carding gently 3–5 min per pass.</p>
+      <ul>
+        <li><strong>Screen stack:</strong> 150 µm work screen → 107 µm → <strong>70–74 µm "money" screen</strong> (70–120 µm heads are the gold) → sub-70 µm catch (edible grade).</li>
+        <li><strong>Static glove tek:</strong> on a 74 µm (200 LPI) screen, sweep a freezer-chilled black nitrile glove in smooth circles — static lifts pure heads, leaves contaminants behind. Whisk off, re-chill, repeat 3–5 passes. Hover and sweep; never mash.</li>
+      </ul>
+
+      <h3>10.5 · Drying the hash <span style="font-weight:400;color:var(--frost-deep)">(cold chain)</span></h3>
+      <ul>
+        <li><strong>Freeze-dry (lyophilise) — best:</strong> condenser −40 to −50 °C, vacuum below ~500–700 mTorr, 24–48 h until fully dry. Removes water without heat or oxidation.</li>
+        <li><strong>Cold air-dry — budget:</strong> microplane the patties onto parchment/screens and dry in a cold room over 24–72 h. More oxidation and contamination risk; watch for mould.</li>
+      </ul>
+
+      <h3>10.6 · Grading &amp; moisture conditioning</h3>
+      <p>Melt-test on a hot nail and grade <strong>1–6 star</strong> (6★ = 95%+ heads, full melt). Grade sets which products are open to you and how tight/cool you can press. Pre-chill the hash and bag before pressing — cold material in the bag means fewer blowouts.</p>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Grade</th><th>Purity</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td>6★ full melt</td><td>95%+ heads</td><td>Dab direct; premium rosin; cart grade</td></tr>
+          <tr><td>5★ near full melt</td><td>85–95%</td><td>Excellent rosin; cart grade with good pressing</td></tr>
+          <tr><td>4★ half melt</td><td>70–85%</td><td>Good rosin; may need more cleaning for carts</td></tr>
+          <tr><td>3★</td><td>50–70%</td><td>Cooking grade or needs cleaning</td></tr>
+          <tr><td>1–2★</td><td>&lt;50%</td><td>Edibles only — too contaminated for rosin</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+
+      <h3>10.7 · Pre-press &amp; bag loading</h3>
+      <ul>
+        <li>Load <strong>2–7 g</strong> into the inner bag; fold the open end over twice. Don't overfill — leave room for flow.</li>
+        <li>For diamonds/mech-sep and any blowout-prone run, sleeve the inner bag inside a <strong>220 µm support bag</strong>.</li>
+        <li>Flower and sift: form a dense, air-free pre-press puck to stop channeling. Full-melt hash: skip the pre-press.</li>
+        <li>Place in folded parchment, open seam facing out toward you.</li>
+      </ul>
+
+      <h3>10.8 · The press</h3>
+      <ol>
+        <li>Pre-heat the closed (or near-closed) plates against the bag <strong>30–60 s, no pressure</strong>.</li>
+        <li><strong>Slowly ramp</strong> force over 15–20 s, watching for the seam to wet and oil to run.</li>
+        <li>Hold at working force <strong>60–120 s</strong> (up to 180 s) or until flow stops — press <em>to flow-stop</em>, not to a number.</li>
+        <li>Release. Yield from clean 5–6★ input typically runs <strong>50–80%</strong>.</li>
+      </ol>
+
+      <h3>10.9 · Collection <span style="font-weight:400;color:var(--frost-deep)">(cold chain)</span></h3>
+      <p>Collect immediately with a cold dab tool onto fresh parchment, then into pre-chilled glass; seal. Cold collection preserves terpenes and sets a cleaner texture. Move straight to your product path (Section 13).</p>
+    </section>
+
+    <!-- 11 ===================================================== -->
+    <section id="equipment">
+      <h2><span class="h2-num">11</span>Equipment-Specific Effects</h2>
+      <p>Each tool exposes its own sub-levers. Match the press class to batch size, and favour accurate temperature control for low-temp work.</p>
+
+      <h3>Press class</h3>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Class</th><th>Force</th><th>Batch</th><th>Best for</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Manual lever</td><td>0.5–5 ton</td><td>0.5–12 g</td><td>Personal → craft</td><td>Fine for small hash runs; force harder to hold steady</td></tr>
+          <tr><td>Hydraulic</td><td>7–20 ton</td><td>4–150 g</td><td>Craft → commercial</td><td>Workhorse; pair with PID plates for accuracy</td></tr>
+          <tr><td>Pneumatic</td><td>5–8 ton</td><td>7–35 g</td><td>Craft → commercial</td><td>Smooth, repeatable ramp — ideal for gentle hash pressing</td></tr>
+          <tr><td>Electric / hybrid</td><td>0.75–20 ton</td><td>1–115 g</td><td>Personal → commercial</td><td>Hands-free; app/PID control for tight low-temp accuracy</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+
+      <h3>Plates, bags &amp; cold-chain gear</h3>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Tool</th><th>Lever</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Plates &amp; heat zones</td><td>PID accuracy, even heat, 2–6 zones</td><td>Tight, even temperature = predictable flow &amp; colour; cheap plates swing and scorch</td></tr>
+          <tr><td>Micron bag</td><td>Mesh size (the gate)</td><td>Hash 25–45 µm (full-melt) to 90 µm (lower grade); flower 75–115 µm; sift 36–120 µm</td></tr>
+          <tr><td>Support sleeve</td><td>160–220 µm outer bag</td><td>Backs the inner bag against rupture — the main blowout defence</td></tr>
+          <tr><td>Pre-press mold</td><td>Puck density &amp; shape</td><td>Even, air-free puck → even flow; flower/sift only</td></tr>
+          <tr><td>Wash vessel &amp; bags</td><td>Agitation, micron stack</td><td>Gentle agitation + clean stack = cleaner heads; see 10.3</td></tr>
+          <tr><td>Freeze dryer</td><td>Condenser temp, vacuum, time</td><td>Heat-free drying preserves the live profile; the quality default for hash</td></tr>
+          <tr><td>Collection &amp; storage</td><td>Cold tool, sealed glass, fridge</td><td>Cold collection + cold dark sealed storage = terpene retention</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+    </section>
+
+    <!-- 12 ===================================================== -->
+    <section id="trichome">
+      <h2><span class="h2-num">12</span>Input / Trichome Interaction Matrix</h2>
+      <p>Read the material — under a loupe or scope — and let it pick the settings. Micron is dictated by head size and debris, never chased for its own sake.</p>
+      <div class="table-wrap"><div class="table-scroll">
+      <table class="matrix">
+        <thead><tr><th>Material / trichome read</th><th>Bag micron</th><th>Plate temp</th><th>Ramp</th><th>Best product</th></tr></thead>
+        <tbody>
+          <tr><td>Heads &gt;100 µm, low contaminant</td><td>90 µm<span class="sub">115 µm if very clean flower</span></td><td>cold end</td><td>gentle</td><td>Badder</td></tr>
+          <tr><td>Heads 70–100 µm</td><td>45–73 µm</td><td>88–99 °C flower / cooler hash</td><td>moderate</td><td>Badder / live</td></tr>
+          <tr><td>Heads &lt;70 µm or high fines</td><td>25–37 µm</td><td>slightly higher to push through</td><td>slow, don't overfill</td><td>Careful — blowout-prone</td></tr>
+          <tr><td>Mostly cloudy + high intact %</td><td>match head size</td><td>71–85 °C</td><td>gentle</td><td>Cold-cure badder</td></tr>
+          <tr><td>Low intact % (ruptured / degraded)</td><td>match head size</td><td>99–104 °C, shorter dwell</td><td>moderate</td><td>Carts / sauce</td></tr>
+          <tr><td>High contaminant %</td><td>tighter (25–37 µm)</td><td>+ a few °C</td><td>firm pre-press, slow ramp</td><td>Recover, don't chase melt</td></tr>
+          <tr><td>Fresh-frozen hash (clean, large heads)</td><td>36–90 µm</td><td>60–85 °C</td><td>gentle</td><td>Live rosin</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+      <blockquote>The rule the matrix encodes: <strong>small heads and fines escape or channel a coarse screen — the classic blowout trigger.</strong> Tighten the micron, slow the ramp, and don't overfill.</blockquote>
+    </section>
+
+    <!-- 13 ===================================================== -->
+    <section id="products">
+      <h2><span class="h2-num">13</span>Post-Press Product Paths</h2>
+      <p>The same fresh-pressed rosin diverges into every solventless product through the finishing levers. Press setpoint sets the starting oil; the cure sets the destination.</p>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Product</th><th>Press setpoint</th><th>Cure / finish</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>Fresh-press live rosin</td><td>Cool 60–77 °C (hash)</td><td>Use fresh; keep cold</td><td>Sappy, terpene-forward</td></tr>
+          <tr><td>Cold-cure badder / jam</td><td>Cool press</td><td>Sealed jar <strong>10–21 °C</strong>, days–2 weeks</td><td>Creamy, buttery</td></tr>
+          <tr><td>Sauce</td><td>Cool press, then nucleate</td><td>Warm cure</td><td>Wet, high-terpene</td></tr>
+          <tr><td>Diamonds &amp; sauce <span class="sub">mechanical separation</span></td><td>Nucleate first (cold cure 13–16 °C)</td><td>Progressive press <strong>40 → 46 → 52 → 57 °C</strong>; melt THCa puck at 120–130 °C; recombine ~70/30 with sauce</td><td>Clear diamonds in sauce</td></tr>
+          <tr><td>Diamonds <span class="sub">jar / jam tek</span></td><td>Press clean rosin</td><td>Sealed jar: heat <strong>93 °C, 1–2 h</strong>, then crystallise at <strong>38 °C for 1–2 weeks</strong></td><td>Crystal balls in jam</td></tr>
+          <tr><td>Vape / cart oil</td><td>Press clean &amp; cool (low lipid hash is ideal)</td><td>Decarb sealed: mech-sep THCa 95–100 °C 40–60 min, <em>or</em> whole rosin 71 °C ~6 days (&lt;3% terpene loss); degas, fridge-test, fill at 32 °C</td><td>Clear, stable cart oil</td></tr>
+          <tr><td>Hash hole core</td><td>Cool 60–77 °C, cohesive full-melt</td><td>Roll to a rope while pliable</td><td>Donut core that melts clean</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+      <div class="box danger"><p class="box-title">The one irreversible rule</p><p><strong>Never start a diamond press hot.</strong> At high temperature THCa dissolves <em>into</em> the terpenes and flows out with them — your diamonds leave with the sauce. Progressive low-temp pressing removes terpenes gradually so the THCa runs out of solvent and stays behind. And decarb is one-way: decarbed THC will never crystallise.</p></div>
+    </section>
+
+    <!-- 14 ===================================================== -->
+    <section id="failures">
+      <h2><span class="h2-num">14</span>Main Failure Modes</h2>
+
+      <div class="failure">
+        <h4><span class="failure-num">F-01</span>Blowout — bag ruptures, contamination floods the slab</h4>
+        <p><strong>Cause:</strong> pressure ramped too fast, bag overfilled, micron too coarse for the heads, or no support sleeve.</p>
+        <p><strong>Fix:</strong> 220 µm outer sleeve, slow 15–20 s ramp, smaller load, micron matched to head size. Let heat lead, force follow.</p>
+      </div>
+      <div class="failure">
+        <h4><span class="failure-num">F-02</span>Low yield / "won't flow" (chromatography, reabsorption)</h4>
+        <p><strong>Cause:</strong> temp too low, material too dry, pressure too low, or screen too tight for the heads.</p>
+        <p><strong>Fix:</strong> +3–6 °C; condition moisture; firmer, slower ramp; open the micron one step.</p>
+      </div>
+      <div class="failure">
+        <h4><span class="failure-num">F-03</span>Hazy / unstable / "wet" rosin</h4>
+        <p><strong>Cause:</strong> excess moisture (under-dried hash, wet flower) causing emulsion, or a high-lipid flower.</p>
+        <p><strong>Fix:</strong> dry &amp; condition the input (freeze-dry hash fully; flower ~60% RH); press cooler; tighten the bag.</p>
+      </div>
+      <div class="failure">
+        <h4><span class="failure-num">F-04</span>Flat, terpene-stripped product</h4>
+        <p><strong>Cause:</strong> plate too hot, dwell too long, hot collection, or poor storage.</p>
+        <p><strong>Fix:</strong> drop into the cold-press band; shorten dwell; collect cold; store sealed, cold and dark.</p>
+      </div>
+      <div class="failure">
+        <h4><span class="failure-num">F-05</span>Dark or green rosin</h4>
+        <p><strong>Cause:</strong> overheated, over-pressed, or contaminated low-grade input.</p>
+        <p><strong>Fix:</strong> lower temp; gentler ramp; tighten micron; start from cleaner 5–6★ material — colour is mostly an input problem.</p>
+      </div>
+      <div class="failure">
+        <h4><span class="failure-num">F-06</span>Auto-budders too fast vs won't butter at all</h4>
+        <p><strong>Cause:</strong> residual moisture makes it auto-budder greasy; conversely fresh sap simply hasn't nucleated.</p>
+        <p><strong>Fix:</strong> control input moisture; to butter on purpose, cold-cure sealed at 13–16 °C for 24–72 h.</p>
+      </div>
+      <div class="failure">
+        <h4><span class="failure-num">F-07</span>Diamonds won't form / no terpene layer</h4>
+        <p><strong>Cause:</strong> cure temperature too high (THCa stays dissolved), material already decarbed, not nucleated, or too clean/too dirty a ratio.</p>
+        <p><strong>Fix:</strong> drop to ~38 °C / 95 °F; start from fresh, undecarbed, nucleated rosin; press progressively — never start hot.</p>
+      </div>
+      <div class="failure">
+        <h4><span class="failure-num">F-08</span>Batch-to-batch inconsistency</h4>
+        <p><strong>Cause:</strong> uncontrolled moisture, eyeballed ramp, no record of what you did.</p>
+        <p><strong>Fix:</strong> log every run — material, grade, micron, temp, time, yield, outcome — and change one lever at a time.</p>
+      </div>
+    </section>
+
+    <!-- 15 ===================================================== -->
+    <section id="hierarchy">
+      <h2><span class="h2-num">15</span>Practical Control Hierarchy</h2>
+      <p>Set these in order. Each step constrains the next; skipping upstream steps wastes the downstream ones.</p>
+      <h3>1. Fix the input ceiling first</h3>
+      <p>Genetics, harvest maturity, wash/sift quality, and moisture set the maximum. You cannot out-press bad input.</p>
+      <h3>2. Pick the product</h3>
+      <p>Badder, live rosin, diamonds, cart or hash hole — this choice sets the temperature band and the cure.</p>
+      <h3>3. Choose the micron from head size &amp; contamination</h3>
+      <p>Big clean heads → coarser; small heads or fines → tighter. Don't chase a small micron for its own sake.</p>
+      <h3>4. Set the temperature band for material × product</h3>
+      <p>Lowest temperature that still flows. Hash cool, flower warmer, degraded material warmer still.</p>
+      <h3>5. Ramp pressure to flow — never chase pressure</h3>
+      <p>Heat first, force second. Pressure only completes a flow that heat has already started.</p>
+      <h3>6. Collect cold, then cure to texture</h3>
+      <p>Cold collection locks terpenes; the cure (cold / warm / staged) decides badder, sauce or diamonds.</p>
+      <h3>7. Store &amp; validate</h3>
+      <p>Seal cold, dark, airtight. Log yield and grade, and adjust one lever next run.</p>
+    </section>
+
+    <!-- 16 ===================================================== -->
+    <section id="troubleshoot">
+      <h2><span class="h2-num">16</span>Minimal Operating Matrix for Troubleshooting</h2>
+      <p>Observation → likely cause → first checks. Start at the top — most problems are upstream of the plates.</p>
+      <div class="table-wrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Observation</th><th>Likely cause</th><th>First checks</th></tr></thead>
+        <tbody>
+          <tr><td>Yield far below 50% on good grade</td><td>Temp/pressure too low or material too dry</td><td>Confirm platen temp; check moisture; firmer slow ramp; +3–6 °C</td></tr>
+          <tr><td>Rosin dark / green</td><td>Too hot, contaminated, or over-pressed</td><td>Lower temp; verify grade &amp; cleanliness; tighten micron</td></tr>
+          <tr><td>Cloudy / unstable / separates</td><td>Moisture or lipids</td><td>Check dry/condition; cooler press; tighter bag</td></tr>
+          <tr><td>Weak smell / taste</td><td>Heat or oxygen exposure</td><td>Cooler press; cold collection; sealed cold storage</td></tr>
+          <tr><td>Bag ruptured</td><td>Ramp too fast / overfill / coarse micron</td><td>Support sleeve; slower ramp; smaller load; match micron</td></tr>
+          <tr><td>Diamonds won't crystallise</td><td>Cure temp too high or decarbed/un-nucleated</td><td>Drop to ~38 °C; confirm fresh, nucleated, undecarbed rosin</td></tr>
+          <tr><td>Cart clogs / re-crystallises</td><td>Incomplete decarb (THCa &gt; ~50%)</td><td>Re-decarb sealed; fridge-test 24 h before filling</td></tr>
+          <tr><td>Results vary run to run</td><td>Uncontrolled variables</td><td>Log everything; change one lever per run</td></tr>
+        </tbody>
+      </table>
+      </div></div>
+    </section>
+
+    <!-- 17 ===================================================== -->
+    <section id="model">
+      <h2><span class="h2-num">17</span>The Simplest Mental Model</h2>
+      <p>If you keep only one thing, keep the chain:</p>
+      <div class="chain">
+        <div class="chain-label">The pressing chain</div>
+        <p class="chain-text"><strong>Trichome grade &amp; moisture</strong> set the ceiling → <strong>heat</strong> lowers resin viscosity → <strong>pressure</strong> drives flow through the screen → <strong>micron</strong> selects what passes (pure oil vs fats &amp; plant matter) → so <strong>yield and purity trade</strong> against each other → <strong>collection temperature</strong> locks the texture → the <strong>cure</strong> decides badder, sauce or diamonds → <strong>cold, dark, sealed storage</strong> keeps it.</p>
+      </div>
+      <blockquote>Heat to flow, screen to clean, pressure only to finish — then cure for texture. Quality is set upstream; the press only preserves it or squanders it.</blockquote>
+    </section>
+
+  </main>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="citations">
+    <h4>References</h4>
+    <ol>
+      <li>The Press Club — <a href="https://thepressclub.co/blogs/tips-tricks/rosin-press-temperature-guide">Rosin Press Temperature Guide</a>, <a href="https://thepressclub.co/blogs/tips-tricks/rosin-press-pressure-guide">Pressure Guide</a>, <a href="https://thepressclub.co/blogs/tips-tricks/how-to-make-thca-rosin">How to Make THCa Rosin</a>, <a href="https://thepressclub.co/blogs/tips-tricks/cleaning-dry-sift-with-rubber-glove-static-tech">Rubber-Glove Static Tech</a></li>
+      <li>Lowtemp Industries — <a href="https://www.lowtemp-plates.com/blogs/knowledge/how-to-make-solventless-diamonds">Solventless Diamonds</a>, <a href="https://www.lowtemp-plates.com/blogs/knowledge/how-to-make-100-solventless-rosin-cartridges-lowtemp-industries">100% Solventless Cartridges</a></li>
+      <li>Triminator — <a href="https://thetriminator.com/rosin-press-temp-chart/">Rosin Press Temp Chart</a>, <a href="https://thetriminator.com/how-to-cold-cure-rosin/">Cold-Cure Rosin</a>, <a href="https://thetriminator.com/how-to-make-rosin-carts/">Rosin Carts</a></li>
+      <li>Bubbleman (Marcus Richardson) — <a href="https://hightimes.com/grow/tricks-tips-to-make-full-melt-dry-sift-hash/">Full-Melt Dry Sift Hash</a></li>
+      <li>Hashtek — <a href="https://hashtek.ca/thca-tek/">Mechanical THCa Separation</a>, <a href="https://hashtek.ca/jam-tek/">Rosin Jam Tek</a>, <a href="https://hashtek.ca/decarb-experiment-lid-vs-no-lid/">Decarb: Lid vs No Lid</a></li>
+      <li>The Original Resinator — <a href="https://www.theoriginalresinator.com/blog/how-to-press-bubble-hash-into-rosin/">Pressing Bubble Hash into Rosin</a></li>
+      <li>Wang et al. (2016) — <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5549281/">Decarboxylation kinetics</a>, <em>Cannabis Cannabinoid Res.</em> 1(1):262–271</li>
+      <li>Danziger &amp; Bernstein (2023) — <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10249740/">Terpene vapor pressures</a>, PMC10249740</li>
+    </ol>
+    <p class="footer-note">Setpoints, micron guidance and the trichome→press logic are drawn from the author's RosinLab solventless knowledge base and Legacy Ag's internal SOPs (dry-sift-to-cart and solventless diamonds &amp; sauce). A field guide, not a substitute for testing your own material — verify by logging your runs. Modelled after <a href="https://github.com/JakeTheRabbit/cannabis-grow-room-levers">cannabis-grow-room-levers</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
