@@ -1,5 +1,7 @@
 # Hash Rosin, Pressed
 
+> **This repo is free. My 2am dryback debugging is not.** If it saved you a crop, a weekend, or a nervous breakdown — [buy the rabbit a bag of nutes](https://github.com/sponsors/JakeTheRabbit). If it didn't, keep your money. I respect a tight nutrient budget.
+
 A systems-thinking field guide for solventless hash rosin — the press as a coupled
 **heat / pressure / time / screen** system acting on a material whose quality ceiling was
 fixed upstream at harvest, in the wash, and in the dry.
@@ -38,5 +40,3 @@ Bubbleman and Hashtek, plus decarb-kinetics and terpene-vapor-pressure literatur
 list in the page footer.
 
 Modelled after [cannabis-grow-room-levers](https://github.com/JakeTheRabbit/cannabis-grow-room-levers).
-
-> **This repo is free. My 2am dryback debugging is not.** If it saved you a crop, a weekend, or a nervous breakdown — [buy the rabbit a bag of nutes](https://github.com/sponsors/JakeTheRabbit). If it didn't, keep your money. I respect a tight nutrient budget.
